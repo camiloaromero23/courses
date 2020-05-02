@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { DragDropContext} from "react-beautiful-dnd";
 import { v4 as uuid } from "uuid";
+
+import DropContainer from './DropContainer'
 import "./App.css";
 
 const itemsFromBackend = [
@@ -72,55 +74,7 @@ function App() {
       >
         {Object.entries(columns).map(([id, column]) => {
           return (
-            <div className="columnContainer">
-              <h2> {column.name}</h2>
-              <div className="dropContainer">
-                <Droppable droppableId={id} key={id}>
-                  {(provided, snapshot) => {
-                    const droppableStyle = snapshot.isDraggingOver
-                      ? "droppableblue"
-                      : "droppablegray";
-                    return (
-                      <div
-                        {...provided.droppableProps}
-                        ref={provided.innerRef}
-                        className={`droppable ${droppableStyle}`}
-                      >
-                        {column.items.map((item, index) => {
-                          return (
-                            <Draggable
-                              key={item.id}
-                              draggableId={item.id}
-                              index={index}
-                            >
-                              {(provided, snapshot) => {
-                                const itemStyle = snapshot.isDragging
-                                ? "itemBlue"
-                                : "itemLight";
-                                return (
-                                  <div
-                                    ref={provided.innerRef}
-                                    {...provided.draggableProps}
-                                    {...provided.dragHandleProps}
-                                    className={`item ${itemStyle}`}
-                                    // style={{
-                                    //   ...provided.draggableProps.style
-                                    // }}
-                                  >
-                                    {item.content}
-                                  </div>
-                                );
-                              }}
-                            </Draggable>
-                          );
-                        })}
-                        {provided.placeholder}
-                      </div>
-                    );
-                  }}
-                </Droppable>
-              </div>
-            </div>
+            <DropContainer id={id} column={column} key={id}/>
           );
         })}
       </DragDropContext>

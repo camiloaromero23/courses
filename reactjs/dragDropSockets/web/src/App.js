@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { v4 as uuid } from 'uuid';
 import io from 'socket.io-client';
@@ -31,6 +31,7 @@ const columnsFromBackend = {
     items: [],
   },
 };
+
 const onDragEnd = (result, columns, setColumns) => {
   if (!result.destination) return;
   const { source, destination } = result;
@@ -64,19 +65,34 @@ const onDragEnd = (result, columns, setColumns) => {
         items: copiedItems,
       },
     });
+    // socket.emit('drag-drop',{columns: JSON.stringify(columns)});
   }
 };
 
 function App() {
   const [columns, setColumns] = useState(columnsFromBackend);
+  const dragDropContext = useRef(null);
+  const dropContainer = useRef(null);
+
+  useEffect(() => {
+    socket.on('drag-drop-remote', ({ result, columns, setColumns }) => {});
+  });
 
   return (
     <div className='App'>
       <DragDropContext
+        ref={dragDropContext}
         onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
       >
         {Object.entries(columns).map(([id, column]) => {
-          return <DropContainer id={id} column={column} key={id} />;
+          return (
+            <DropContainer
+              ref={dropContainer}
+              id={id}
+              column={column}
+              key={id}
+            />
+          );
         })}
       </DragDropContext>
     </div>

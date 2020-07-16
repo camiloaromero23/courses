@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link
+			href="https://fonts.googleapis.com/css?family=Anton|Roboto:300,400,500"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<script src="js/vue.js"></script>
+		<title>Who pays the bill</title>
+	</head>
+	<body>
+		<div id="app">
+			<div id="names" class="container" v-if="state">
+				<h1>Who pays the bill</h1>
+				<div class="input_container">
+					<input v-model="inputName" type="text" />
+					<button @click="addName">ADD</button>
+				</div>
+				<div class="error_label" v-if="showError">Enter a name</div>
+				<div class="list_of_names">
+					<div
+						@click="removeName(index)"
+						v-for="(name,index) in names"
+						:key="index"
+					>
+						{{ name }}
+					</div>
+				</div>
+				<div v-if="names.length > 1">
+					<div @click="checkLoser" class="action_button">
+						Check who pays
+					</div>
+				</div>
+			</div>
+			<div id="result" class="container" v-else>
+				<div class="result_container">
+					<h1>The loser is</h1>
+					<div class="result_value">
+						{{loserName}}
+					</div>
+					<div class="action_button" @click="changeAppWindow">
+						Start again
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+	<script src="js/main.js"></script>
+</html>

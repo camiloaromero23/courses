@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="js/vue.js"></script>
+		<title>Document</title>
+	</head>
+	<body>
+		<div id="app">
+			<input v-model="user" type="text" />
+			<button @click="toggle">Other</button>
+			<hr />
+			<div>
+				Name: {{compMessage}} Active : {{isActive()}}
+			</div>
+			<div>
+				Loading: {{loading}}
+			</div>
+		</div>
+	</body>
+	<script>
+		new Vue({
+			el: '#app',
+			data: {
+				user: '',
+				active: false,
+				loading: false,
+			},
+			methods: {
+				toggle() {
+					this.active = !this.active;
+				},
+				isActive() {
+					return this.active ? 'Active' : 'Not Active';
+				},
+			},
+			computed: {
+				compMessage() {
+					return this.user === 'Francis' ? 'Welcome' : 'Not allowed';
+				},
+			},
+			watch: {
+				active(value) {
+					this.loading = true;
+					setTimeout(() => {
+						this.loading = false;
+					}, 3000);
+				},
+			},
+		});
+	</script>
+</html>

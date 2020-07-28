@@ -9,6 +9,11 @@ new Vue({
 			loserName: '',
 		};
 	},
+	computed: {
+		log() {
+			console.log('Halooo');
+		},
+	},
 	methods: {
 		addName() {
 			if (this.validateName(this.inputName)) {

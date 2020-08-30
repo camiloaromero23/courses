@@ -1,0 +1,62 @@
+<div class="row">
+	<div class="col-xs-12 col-md-6 col-md-offset-3">
+		<h1 style="text-align: center;">
+			{{ onLoginMode ? 'Login' : 'SignUp' }}
+		</h1>
+
+		<form (ngSubmit)="onSubmit()" [formGroup]="authForm">
+			<div class="form-group">
+				<label for="email">E-Mail</label>
+				<input
+					class="form-control"
+					formControlName="email"
+					id="email"
+					type="email"
+				/>
+			</div>
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input
+					class="form-control"
+					formControlName="password"
+					id="password"
+					type="password"
+				/>
+			</div>
+			<div *ngIf="isLoading" style="text-align: center;">
+				<app-loading-spinner></app-loading-spinner>
+			</div>
+			<div>
+				<button
+					[disabled]="!authForm.valid"
+					class="btn btn-primary"
+					style="margin: 0 1vh 0 0;"
+					type="submit"
+				>
+					{{ onLoginMode ? 'Login' : 'SignUp' }}
+				</button>
+
+				<button
+					(click)="onSwitchMode()"
+					class="btn btn-primary"
+					type="button"
+				>
+					Switch to {{ !onLoginMode ? 'Login' : 'SignUp' }}
+				</button>
+			</div>
+			<!--			<app-alert-->
+			<!--				*ngIf="error"-->
+			<!--				[message]="error"-->
+			<!--				(close)="onHandleError()"-->
+			<!--			></app-alert>-->
+			<!--			<div-->
+			<!--				class="alert alert-danger"-->
+			<!--				style="margin-top: 5px;"-->
+			<!--				*ngIf="error"-->
+			<!--			>-->
+			<!--				<p>{{ error }}</p>-->
+			<!--			</div>-->
+			<ng-template appPlaceholder></ng-template>
+		</form>
+	</div>
+</div>

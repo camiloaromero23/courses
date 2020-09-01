@@ -20,347 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8064fcad-9131-4169-88e3-5663841a0fe7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/angular.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/e2e/protractor.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/e2e/src/app.e2e-spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/e2e/src/app.po.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/e2e/tsconfig.e2e.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/how-to-use.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/src/app/app.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/src/app/app.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/src/app/app.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/src/app/app.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/src/app/app.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/src/app/components/success-alert/success-alert.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/src/app/components/success-alert/success-alert.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/src/app/components/success-alert/success-alert.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/src/app/components/success-alert/success-alert.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/src/app/components/warning-alert/warning-alert.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/src/app/components/warning-alert/warning-alert.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/src/app/components/warning-alert/warning-alert.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/src/app/components/warning-alert/warning-alert.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/src/assets/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/src/browserslist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/src/environments/environment.prod.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/src/environments/environment.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/src/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/src/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/src/karma.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/src/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/src/polyfills.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/src/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/src/test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/src/tsconfig.app.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/src/tsconfig.spec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/src/tslint.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-1-start/tslint.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-2-start/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-2-start/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-2-start/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-2-start/angular.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-2-start/e2e/protractor.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-2-start/e2e/src/app.e2e-spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-2-start/e2e/src/app.po.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-2-start/e2e/tsconfig.e2e.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-2-start/how-to-use.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-2-start/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-2-start/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-2-start/src/app/app.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-2-start/src/app/app.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-2-start/src/app/app.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-2-start/src/app/app.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-2-start/src/app/app.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-2-start/src/assets/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-2-start/src/browserslist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-2-start/src/environments/environment.prod.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-2-start/src/environments/environment.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-2-start/src/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-2-start/src/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-2-start/src/karma.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-2-start/src/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-2-start/src/polyfills.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-2-start/src/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-2-start/src/test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-2-start/src/tsconfig.app.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-2-start/src/tsconfig.spec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-2-start/src/tslint.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-2-start/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-2-start/tslint.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-3-start/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-3-start/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-3-start/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-3-start/angular.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-3-start/e2e/protractor.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-3-start/e2e/src/app.e2e-spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-3-start/e2e/src/app.po.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-3-start/e2e/tsconfig.e2e.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-3-start/how-to-use.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-3-start/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-3-start/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-3-start/src/app/app.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-3-start/src/app/app.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-3-start/src/app/app.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-3-start/src/app/app.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-3-start/src/app/app.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-3-start/src/assets/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-3-start/src/browserslist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-3-start/src/environments/environment.prod.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-3-start/src/environments/environment.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-3-start/src/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-3-start/src/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-3-start/src/karma.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-3-start/src/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-3-start/src/polyfills.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-3-start/src/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-3-start/src/test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-3-start/src/tsconfig.app.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-3-start/src/tsconfig.spec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-3-start/src/tslint.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-3-start/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/basics-assignment-3-start/tslint.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/forms-reactive-assignment-start/.prettierrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/forms-reactive-assignment-start/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/forms-reactive-assignment-start/src/app/customValidators.validators.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/forms-td-assignment-start/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/my-first-app/.browserslistrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/my-first-app/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/my-first-app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/my-first-app/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/my-first-app/angular.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/my-first-app/e2e/protractor.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/my-first-app/e2e/src/app.e2e-spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/my-first-app/e2e/src/app.po.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/my-first-app/e2e/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/my-first-app/karma.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/my-first-app/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/my-first-app/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/my-first-app/src/app/app.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/my-first-app/src/app/app.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/my-first-app/src/app/app.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/my-first-app/src/app/app.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/my-first-app/src/app/app.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/my-first-app/src/assets/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/my-first-app/src/environments/environment.prod.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/my-first-app/src/environments/environment.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/my-first-app/src/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/my-first-app/src/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/my-first-app/src/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/my-first-app/src/polyfills.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/my-first-app/src/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/my-first-app/src/test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/my-first-app/tsconfig.app.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/my-first-app/tsconfig.base.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/my-first-app/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/my-first-app/tsconfig.spec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/my-first-app/tslint.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/angular.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/e2e/protractor.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/e2e/src/app.e2e-spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/e2e/src/app.po.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/e2e/tsconfig.e2e.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/ngsw-config.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/app/app.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/app/app.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/app/app.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/app/app.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/app/post.model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/app/post/post.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/app/post/post.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/app/post/post.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/app/post/post.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/app/shared/data.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/app/shared/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/app/shared/reverse.pipe.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/app/shared/reverse.pipe.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/app/user/user.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/app/user/user.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/assets/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/assets/icons/icon-128x128.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/assets/icons/icon-144x144.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/assets/icons/icon-152x152.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/assets/icons/icon-192x192.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/assets/icons/icon-384x384.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/assets/icons/icon-512x512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/assets/icons/icon-72x72.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/assets/icons/icon-96x96.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/browserslist" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/environments/environment.prod.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/environments/environment.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/karma.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/manifest.webmanifest" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/polyfills.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/tsconfig.app.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/tsconfig.spec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/src/tslint.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/ng-pwa-01-start/ng-pwa-01-start/tslint.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/pipes-assignment-start/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/pipes-assignment-start/src/app/reverse.pipe.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/pipes-assignment-start/src/app/reverse.pipe.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/pipes-assignment-start/src/app/sort.pipe.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/pipes-assignment-start/src/app/sort.pipe.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/.browserslistrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/.prettierrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/angular.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/e2e/protractor.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/e2e/src/app.e2e-spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/e2e/src/app.po.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/e2e/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/karma.conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/server/app.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/server/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/app-routing.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/app.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/app.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/app.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/app.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/app.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/app.server.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/alert/alert.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/alert/alert.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/alert/alert.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/alert/alert.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/auth/auth-interceptor.service.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/auth/auth-interceptor.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/auth/auth.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/auth/auth.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/auth/auth.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/auth/auth.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/auth/auth.guard.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/auth/auth.guard.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/auth/auth.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/auth/auth.service.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/auth/auth.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/auth/store/auth.actions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/auth/store/auth.effects.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/auth/store/auth.reducer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/auth/user.model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/header/header.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/header/header.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/header/header.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/header/header.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/recipe-detail/recipe-detail.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/recipe-detail/recipe-detail.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/recipe-detail/recipe-detail.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/recipe-detail/recipe-detail.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/recipe-edit/recipe-edit.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/recipe-edit/recipe-edit.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/recipe-edit/recipe-edit.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/recipe-edit/recipe-edit.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/recipe-list/recipe-item/recipe-item.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/recipe-list/recipe-item/recipe-item.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/recipe-list/recipe-item/recipe-item.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/recipe-list/recipe-item/recipe-item.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/recipe-list/recipe-list.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/recipe-list/recipe-list.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/recipe-list/recipe-list.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/recipe-list/recipe-list.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/recipe-start/recipe-start.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/recipe-start/recipe-start.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/recipe-start/recipe-start.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/recipe-start/recipe-start.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/recipe.model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/recipe.service.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/recipe.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/recipes-resolver.service.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/recipes-resolver.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/recipes-routing.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/recipes.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/recipes.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/recipes.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/recipes.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/recipes.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/store/recipe.actions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/store/recipe.effects.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/recipes/store/recipe.reducer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/shopping-list/shopping-edit/shopping-edit.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/shopping-list/shopping-edit/shopping-edit.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/shopping-list/shopping-edit/shopping-edit.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/shopping-list/shopping-edit/shopping-edit.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/shopping-list/shopping-list-routing.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/shopping-list/shopping-list.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/shopping-list/shopping-list.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/shopping-list/shopping-list.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/shopping-list/shopping-list.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/shopping-list/shopping-list.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/shopping-list/shopping-list.service.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/shopping-list/shopping-list.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/shopping-list/store/shopping-list.actions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/components/shopping-list/store/shopping-list.reducer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/core/core.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/shared/data-storage.service.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/shared/data-storage.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/shared/dropdown.directive.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/shared/dropdown.directive.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/shared/ingredient.model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/shared/loading-spinner/loading-spinner.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/shared/loading-spinner/loading-spinner.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/shared/loading-spinner/loading-spinner.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/shared/loading-spinner/loading-spinner.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/shared/placeholder.directive.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/shared/placeholder.directive.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/shared/shared.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/app/store/app.reducer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/assets/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/environments/environment.prod.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/environments/environment.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/polyfills.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/src/test.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/tsconfig.app.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/tsconfig.base.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/tsconfig.spec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../angular/project/tslint.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/firstApp.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../vuejs/completeVueCourse/gamespot/src/components/404.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../vuejs/completeVueCourse/gamespot/src/components/AddPost.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../vuejs/completeVueCourse/gamespot/src/components/Content.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../vuejs/completeVueCourse/gamespot/src/components/Dashboard.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../vuejs/completeVueCourse/gamespot/src/components/DashboardWelcome.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../vuejs/completeVueCourse/gamespot/src/components/Featured.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../vuejs/completeVueCourse/gamespot/src/components/Footer.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../vuejs/completeVueCourse/gamespot/src/components/Header.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../vuejs/completeVueCourse/gamespot/src/components/Home.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../vuejs/completeVueCourse/gamespot/src/components/ListPost.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../vuejs/completeVueCourse/gamespot/src/components/Post.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../vuejs/completeVueCourse/gamespot/src/components/ReviewButton.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../vuejs/completeVueCourse/gamespot/src/components/SignIn.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../vuejs/completeVueCourse/gamespot/src/routes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../vuejs/completeVueCourse/gamespot/src/store/modules/admin.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../vuejs/completeVueCourse/gamespot/src/store/modules/posts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../vuejs/completeVueCourse/gamespot/src/store/store.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../vuejs/completeVueCourse/gamespot/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../vuejs/completeVueCourse/gamespot/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../vuejs/completeVueCourse/gamespot/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../vuejs/completeVueCourse/gamespot/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../vuejs/completeVueCourse/gamespot/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../vuejs/completeVueCourse/gamespot/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../vuejs/completeVueCourse/gamespot/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../vuejs/completeVueCourse/gamespot/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../vuejs/completeVueCourse/gamespot/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../vuejs/completeVueCourse/gamespot/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -386,7 +46,9 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="javascript.nodejs.core.library.configured.version" value="12.18.2" />
+    <property name="javascript.nodejs.core.library.typings.version" value="12.12.54" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../nodejsServer" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -397,7 +59,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1598751994154</updated>
-      <workItem from="1598751995984" duration="150000" />
+      <workItem from="1598751995984" duration="418000" />
+      <workItem from="1598803227883" duration="681000" />
     </task>
     <servers />
   </component>
@@ -414,8 +77,15 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2056" y="254" width="530" height="605" key="FileChooserDialogImpl" timestamp="1598804461614">
+      <screen x="1366" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2056" y="254" width="530" height="605" key="FileChooserDialogImpl/1366.0.1920.1080/0.134.1366.741@1366.0.1920.1080" timestamp="1598804461614" />
   </component>
 </project>

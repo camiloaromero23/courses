@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="760a0d08-6d00-4a9d-b983-4c60c3e8e243" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../basicNodeExpressServer/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicNodeExpressServer/.idea/basicNodeExpressServer.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicNodeExpressServer/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicNodeExpressServer/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicNodeExpressServer/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicNodeExpressServer/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicNodeExpressServer/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicNodeExpressServer/.prettierrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicNodeExpressServer/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicNodeExpressServer/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicNodeExpressServer/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicNodeExpressServer/public/css/forms.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicNodeExpressServer/public/css/main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicNodeExpressServer/public/css/product.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicNodeExpressServer/routes/admin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicNodeExpressServer/routes/shop.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicNodeExpressServer/util/path.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicNodeExpressServer/views/404.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicNodeExpressServer/views/add-product.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicNodeExpressServer/views/includes/end.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicNodeExpressServer/views/includes/head.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicNodeExpressServer/views/includes/navigation.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicNodeExpressServer/views/shop.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicsNodeJSServer/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicsNodeJSServer/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicsNodeJSServer/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicsNodeJSServer/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicsNodeJSServer/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicsNodeJSServer/.idea/nodejsServer.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicsNodeJSServer/.idea/prettier.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicsNodeJSServer/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicsNodeJSServer/.prettierrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicsNodeJSServer/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicsNodeJSServer/message.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicsNodeJSServer/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicsNodeJSServer/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../basicsNodeJSServer/routes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../starting-resources/__MACOSX/._starting-resources" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../starting-resources/__MACOSX/starting-resources/._public" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../starting-resources/__MACOSX/starting-resources/._views" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../starting-resources/__MACOSX/starting-resources/public/._css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../starting-resources/__MACOSX/starting-resources/public/css/._forms.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../starting-resources/__MACOSX/starting-resources/public/css/._main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../starting-resources/__MACOSX/starting-resources/public/css/._product.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../starting-resources/__MACOSX/starting-resources/views/._404.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../starting-resources/__MACOSX/starting-resources/views/._add-product.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../starting-resources/__MACOSX/starting-resources/views/._shop.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../starting-resources/starting-resources/public/css/forms.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../starting-resources/starting-resources/public/css/main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../starting-resources/starting-resources/public/css/product.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../starting-resources/starting-resources/views/404.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../starting-resources/starting-resources/views/add-product.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../starting-resources/starting-resources/views/shop.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../firstTask/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../firstTask/.idea/firstTask.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../firstTask/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../firstTask/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../firstTask/.idea/prettier.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../firstTask/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../firstTask/.prettierrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../firstTask/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../firstTask/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/fourthtask.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/includes/end.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/includes/head.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/index.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/users.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../secondTask/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../secondTask/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../secondTask/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../secondTask/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../secondTask/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../secondTask/.idea/prettier.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../secondTask/.idea/secondTask.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../secondTask/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../secondTask/.prettierrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../secondTask/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../secondTask/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../secondTask/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdTask/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdTask/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdTask/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdTask/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdTask/.idea/prettier.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdTask/.idea/thirdTask.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdTask/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdTask/.prettierrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdTask/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdTask/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdTask/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdTask/public/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdTask/routes/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdTask/util/path.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdTask/views/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../thirdTask/views/users.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../templateEngines/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../templateEngines/.prettierrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../templateEngines/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../templateEngines/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../templateEngines/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../templateEngines/public/css/forms.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../templateEngines/public/css/main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../templateEngines/public/css/product.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../templateEngines/routes/admin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../templateEngines/routes/shop.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../templateEngines/util/path.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../templateEngines/views/404.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../templateEngines/views/404.handlebars" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../templateEngines/views/404.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../templateEngines/views/404.pug" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../templateEngines/views/add-product.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../templateEngines/views/add-product.handlebars" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../templateEngines/views/add-product.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../templateEngines/views/add-product.pug" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../templateEngines/views/includes/end.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../templateEngines/views/includes/head.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../templateEngines/views/includes/navigation.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../templateEngines/views/layouts/main-layout.handlebars" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../templateEngines/views/layouts/main-layout.pug" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../templateEngines/views/shop.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../templateEngines/views/shop.handlebars" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../templateEngines/views/shop.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../templateEngines/views/shop.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../firstApp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../firstApp/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="2" />
+  </component>
+  <component name="ProjectId" id="1gqgJyRa6ExoHFGDMzlqaKKX1YB" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="12.18.2" />
+    <property name="javascript.nodejs.core.library.typings.version" value="12.12.54" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="760a0d08-6d00-4a9d-b983-4c60c3e8e243" name="Default Changelist" comment="" />
+      <created>1598847469167</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1598847469167</updated>
+      <workItem from="1598847470548" duration="363000" />
+      <workItem from="1598847865632" duration="1240000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2007" y="330" width="686" height="460" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1598847875837">
+      <screen x="1366" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2007" y="330" width="686" height="460" key="#com.intellij.fileTypes.FileTypeChooser/1366.0.1920.1080/0.134.1366.741@1366.0.1920.1080" timestamp="1598847875837" />
+    <state x="2056" y="254" width="530" height="605" key="FileChooserDialogImpl" timestamp="1598847832421">
+      <screen x="1366" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2056" y="254" width="530" height="605" key="FileChooserDialogImpl/1366.0.1920.1080/0.134.1366.741@1366.0.1920.1080" timestamp="1598847832421" />
+    <state x="1366" y="0" width="732" height="1080" key="find.popup" timestamp="1598847878863">
+      <screen x="1366" y="0" width="1920" height="1080" />
+    </state>
+    <state x="1366" y="0" width="732" height="1080" key="find.popup/1366.0.1920.1080/0.134.1366.741@1366.0.1920.1080" timestamp="1598847878863" />
+  </component>
+</project>

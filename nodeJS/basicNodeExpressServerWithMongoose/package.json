@@ -1,5 +1,5 @@
 {
-  "name": "basicsNodeExpressServer",
+  "name": "basicNodeExpressServerWithMongoose",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",

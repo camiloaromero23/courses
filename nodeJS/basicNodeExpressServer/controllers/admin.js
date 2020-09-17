@@ -6,6 +6,7 @@ exports.getAddProduct = (request, response) => {
 		pageTitle: 'Add Product',
 		path: 'add-product',
 		editMode: false,
+		isAuthenticated: request.session.isLoggedIn,
 	});
 };
 
@@ -16,7 +17,7 @@ exports.getEditProduct = (request, response) => {
 	if (!editMode) {
 		return response.redirect('/');
 	}
-	request.user;
+	request.session.user;
 	// .getProducts({ where: { id: productId } })
 	Product.findById(productId)
 		.then((product) => {
@@ -29,6 +30,7 @@ exports.getEditProduct = (request, response) => {
 				path: 'edit-product',
 				editMode,
 				product,
+				isAuthenticated: request.session.isLoggedIn,
 			});
 		})
 		.catch(console.log);
@@ -53,7 +55,7 @@ exports.postEditProduct = (request, response) => {
 };
 
 exports.getProducts = (request, response) => {
-	// request.user
+	// request.session.user
 	// 	.getProducts()
 	Product.find()
 		// .select('title price -_id') get certain fields
@@ -63,13 +65,14 @@ exports.getProducts = (request, response) => {
 				products,
 				pageTitle: 'Admin Products',
 				path: 'adminProducts',
+				isAuthenticated: request.session.isLoggedIn,
 			});
 		})
 		.catch(console.log);
 };
 
 exports.postAddProduct = (request, response) => {
-	const userId = request.user;
+	const userId = request.session.user;
 	const { title, imageUrl, description, price } = request.body;
 	const product = new Product({
 		title,

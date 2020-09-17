@@ -1,13 +1,12 @@
 const User = require('../models/user');
 
 exports.getLogin = (request, response) => {
-	const isLoggedIn =
-		// request.get('Cookie').split(';')[1].trim().split('=')[1] === 'true';
-		response.render('auth/login', {
-			pageTitle: 'Login',
-			path: 'login',
-			isAuthenticated: false,
-		});
+	// request.get('Cookie').split(';')[1].trim().split('=')[1] === 'true';
+	response.render('auth/login', {
+		pageTitle: 'Login',
+		path: 'login',
+		isAuthenticated: false,
+	});
 };
 
 exports.postLogin = (request, response) => {
@@ -15,7 +14,10 @@ exports.postLogin = (request, response) => {
 		.then((user) => {
 			request.session.isLoggedIn = true;
 			request.session.user = user;
-			response.redirect('/');
+			request.session.save((error) => {
+				console.log('Error', error);
+				response.redirect('/');
+			});
 		})
 		.catch(console.log);
 };
@@ -26,3 +28,14 @@ exports.postLogout = (request, response) => {
 		console.log(error);
 	});
 };
+
+exports.getSignup = (request, response) => {
+	// request.get('Cookie').split(';')[1].trim().split('=')[1] === 'true';
+	response.render('auth/signup', {
+		pageTitle: 'Signup',
+		path: 'signup',
+		isAuthenticated: false,
+	});
+};
+
+exports.postSignup = (request, response) => {};

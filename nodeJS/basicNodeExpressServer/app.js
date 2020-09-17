@@ -11,7 +11,7 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const path = require('path');
 
 const uri =
-	'mongodb+srv://camilo:Ya7xrIP3PZ9zryN4@cluster0.t4n6f.mongodb.net/shop?retryWrites=true&w=majority';
+	'mongodb+srv://camilo:OmWxN6IvvM9sakUz@cluster0.t4n6f.mongodb.net/shop';
 
 const app = express();
 const store = new MongoDBStore({
@@ -33,10 +33,23 @@ app.use(
 		store,
 	}),
 );
+
+app.use((request, response, next) => {
+	if (!request.session.user) {
+		return next();
+	}
+	User.findById(request.session.user._id)
+		.then((user) => {
+			request.user = user;
+			next();
+		})
+		.catch(console.log);
+});
+
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/admin', adminRoutes.router);
 app.use(shopRoutes);

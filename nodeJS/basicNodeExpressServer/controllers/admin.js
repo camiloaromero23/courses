@@ -17,7 +17,7 @@ exports.getEditProduct = (request, response) => {
 	if (!editMode) {
 		return response.redirect('/');
 	}
-	request.session.user;
+	request.user;
 	// .getProducts({ where: { id: productId } })
 	Product.findById(productId)
 		.then((product) => {
@@ -55,7 +55,7 @@ exports.postEditProduct = (request, response) => {
 };
 
 exports.getProducts = (request, response) => {
-	// request.session.user
+	// request.user
 	// 	.getProducts()
 	Product.find()
 		// .select('title price -_id') get certain fields
@@ -72,7 +72,7 @@ exports.getProducts = (request, response) => {
 };
 
 exports.postAddProduct = (request, response) => {
-	const userId = request.session.user;
+	const userId = request.user;
 	const { title, imageUrl, description, price } = request.body;
 	const product = new Product({
 		title,

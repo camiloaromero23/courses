@@ -42,7 +42,7 @@ exports.getIndex = (request, response) => {
 		.catch(console.log);
 };
 exports.getCart = (request, response) => {
-	request.session.user
+	request.user
 		.populate('cart.items.productId')
 		.execPopulate()
 		.then((user) => {
@@ -51,6 +51,7 @@ exports.getCart = (request, response) => {
 				pageTitle: 'Your Cart',
 				path: 'cart',
 				products,
+				isAuthenticated: request.session.isLoggedIn,
 			});
 		})
 		.catch(console.log);
@@ -59,7 +60,7 @@ exports.postCart = (request, response) => {
 	const productId = request.body.productId;
 	Product.findById(productId)
 		.then((product) => {
-			return request.session.user.addToCart(product);
+			return request.user.addToCart(product);
 		})
 		.then((result) => {
 			response.redirect('/cart');
@@ -69,7 +70,7 @@ exports.postCart = (request, response) => {
 };
 exports.postCartDeleteProduct = (request, response) => {
 	const productId = request.body.productId;
-	request.session.user
+	request.user
 		.removeFromCart(productId)
 		.then((result) => {
 			response.redirect('/cart');
@@ -77,7 +78,7 @@ exports.postCartDeleteProduct = (request, response) => {
 		.catch(console.log);
 };
 exports.getOrders = (request, response) => {
-	const userId = request.session.user._id;
+	const userId = request.user._id;
 	Order.find({ 'user.userId': userId })
 		.then((orders) => {
 			response.render('shop/orders', {
@@ -90,7 +91,7 @@ exports.getOrders = (request, response) => {
 };
 
 exports.postOrder = (request, response) => {
-	request.session.user
+	request.user
 		.populate('cart.items.productId')
 		.execPopulate()
 		.then((user) => {
@@ -103,15 +104,15 @@ exports.postOrder = (request, response) => {
 
 			const order = new Order({
 				user: {
-					name: request.session.user.name,
-					userId: request.session.user._id,
+					name: request.user.name,
+					userId: request.user._id,
 				},
 				products,
 			});
 			return order.save();
 		})
 		.then(() => {
-			return request.session.user.clearCart();
+			return request.user.clearCart();
 		})
 		.then(() => {
 			response.redirect('/orders');

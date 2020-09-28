@@ -7,6 +7,8 @@ const authRoutes = require('./routes/auth');
 const session = require('express-session');
 
 const MongoDBStore = require('connect-mongodb-session')(session);
+const csrf = require('csurf');
+const flash = require('connect-flash');
 
 const path = require('path');
 
@@ -18,6 +20,8 @@ const store = new MongoDBStore({
 	uri,
 	collection: 'sessions',
 });
+
+const csrfProtection = csrf({ cookie: false });
 
 const errorController = require('./controllers/error');
 
@@ -50,7 +54,13 @@ app.set('view engine', 'ejs');
 app.set('views', 'views');
 
 app.use(bodyParser.urlencoded({ extended: false }));
-
+app.use(csrfProtection);
+app.use(flash());
+app.use((request, response, next) => {
+	response.locals.isAuthenticated = request.session.isLoggedIn;
+	response.locals.csrfToken = request.csrfToken();
+	next();
+});
 app.use('/admin', adminRoutes.router);
 app.use(shopRoutes);
 app.use(authRoutes);
@@ -63,16 +73,6 @@ mongoose
 	.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
 	.then(() => {
 		const port = 3000;
-		User.findOne().then((user) => {
-			if (!user) {
-				const user = new User({
-					name: 'Camilo',
-					email: 'test@test.com',
-					cart: { items: [] },
-				});
-				user.save();
-			}
-		});
 		app.listen(port);
 		console.log('listening on port', port);
 	})

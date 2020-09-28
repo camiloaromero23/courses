@@ -26,6 +26,7 @@
     <% if (editMode){%>
     <input type="hidden" name="productId" value="<%=product._id%>">
 <%}%>
+    <input type="hidden" name="_csrf" value="<%=csrfToken%>">
     <button class="btn" type="submit"><%= editMode ? 'Update' :'Add' ;%> Product</button>
 </form>
 <%- include('../includes/end.ejs') %>

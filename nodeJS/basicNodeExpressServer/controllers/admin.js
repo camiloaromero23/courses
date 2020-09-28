@@ -6,7 +6,6 @@ exports.getAddProduct = (request, response) => {
 		pageTitle: 'Add Product',
 		path: 'add-product',
 		editMode: false,
-		isAuthenticated: request.session.isLoggedIn,
 	});
 };
 
@@ -30,7 +29,6 @@ exports.getEditProduct = (request, response) => {
 				path: 'edit-product',
 				editMode,
 				product,
-				isAuthenticated: request.session.isLoggedIn,
 			});
 		})
 		.catch(console.log);
@@ -65,7 +63,6 @@ exports.getProducts = (request, response) => {
 				products,
 				pageTitle: 'Admin Products',
 				path: 'adminProducts',
-				isAuthenticated: request.session.isLoggedIn,
 			});
 		})
 		.catch(console.log);

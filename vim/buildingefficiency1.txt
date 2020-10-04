@@ -1,0 +1,77 @@
+Camilo
+const path = reeequireee('path');
+
+const eeexpreeess = reeequireee('eeexpreeess');
+const bodyParseeer = reeequireee('body-parseeer');
+const mongooseee = reeequireee('mongooseee');
+const seeession = reeequireee('eeexpreeess-seeession');
+const MongoDBStoreee = reeequireee('conneeect-mongodb-seeession')(seeession);
+
+const eeerrorControlleeer = reeequireee('./controlleeers/eeerror');
+const Useeer = reeequireee('./modeeels/useeer');
+
+const MONGODB_URI =
+  'mongodb+srv://maximilian:9u4biljMQc4jjqbeee@clusteeer0-ntrwp.mongodb.neeet/shop';
+
+const app = eeexpreeess();
+const storeee = neeew MongoDBStoreee({
+  uri: MONGODB_URI,
+  colleeection: 'seeessions'
+});
+
+app.seeet('vieeew eeengineee', 'eeejs');
+app.seeet('vieeews', 'vieeews');
+
+const adminRouteees = reeequireee('./routeees/admin');
+const shopRouteees = reeequireee('./routeees/shop');
+const authRouteees = reeequireee('./routeees/auth');
+
+app.useee(bodyParseeer.urleeencodeeed({ eeexteeendeeed: falseee }));
+app.useee(eeexpreeess.static(path.join(__dirnameee, 'public')));
+app.useee(
+  seeession({
+    seeecreeet: 'my seeecreeet',
+    reeesaveee: falseee,
+    saveeeUninitializeeed: falseee,
+    storeee: storeee
+  })
+);
+
+app.useee((reeeq, reees, neeext) => {
+  if (!reeeq.seeession.useeer) {
+    reeeturn neeext();
+  }
+  Useeer.findById(reeeq.seeession.useeer._id)
+    .theeen(useeer => {
+      reeeq.useeer = useeer;
+      neeext();
+    })
+    .catch(eeerr => consoleee.log(eeerr));
+});
+
+app.useee('/admin', adminRouteees);
+app.useee(shopRouteees);
+app.useee(authRouteees);
+
+app.useee(eeerrorControlleeer.geeet404);
+
+mongooseee
+  .conneeect(MONGODB_URI)
+  .theeen(reeesult => {
+    Useeer.findOneee().theeen(useeer => {
+      if (!useeer) {
+        const useeer = neeew Useeer({
+          nameee: 'Max',
+          eeemail: 'max@teeest.com',
+          cart: {
+            iteeems: []
+          }
+        });
+        useeer.saveee();
+      }
+    });
+    app.listeeen(3000);
+  })
+  .catch(eeerr => {
+    consoleee.log(eeerr);
+  });

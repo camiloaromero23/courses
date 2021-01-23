@@ -1,21 +1,74 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title>Authenticate</ion-title>
+        <ion-title>{{ isLogin ? 'Login' : 'SignUp' }}</ion-title>
     </ion-toolbar>
 </ion-header>
 
-<ion-content class="padding">
-    <ion-list>
-        <ion-item>
-            <ion-label position="floating">E-Mail</ion-label>
-            <ion-input></ion-input>
-        </ion-item>
-    </ion-list>
-    <!--    <div class="ion-text-center">-->
-    <!--        <ion-spinner color="primary" *ngIf="isLoading"></ion-spinner>-->
-    <!--    </div>-->
+<ion-content class="ion-padding">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <ion-grid>
+            <ion-row>
+                <ion-col size-sm="6" offset-sm="3">
+                    <ion-list>
+                        <ion-item>
+                            <ion-label position="floating">E-Mail</ion-label>
+                            <ion-input
+                                    type="email"
+                                    ngModel
+                                    name="email"
+                                    required
+                                    email
+                                    #emailControl="ngModel"
+                            ></ion-input>
+                        </ion-item>
+                        <ion-item
+                                *ngIf="!emailControl.valid && emailControl.touched"
+                                lines="none">
+                            <ion-label>Email not valid!</ion-label>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label position="floating">Password</ion-label>
+                            <ion-input
+                                    type="password"
+                                    ngModel
+                                    name="password"
+                                    required
+                                    minlength="8"
+                                    #passwordControl="ngModel"
+                            ></ion-input>
+                        </ion-item>
+                        <ion-item
+                                *ngIf="!passwordControl.valid && passwordControl.touched"
+                                lines="none">
+                            <ion-label>Password not valid!</ion-label>
+                        </ion-item>
+                    </ion-list>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size-sm="6" offset-sm="3">
+                    <ion-button
+                            type="button"
+                            color="primary"
+                            fill="clear"
+                            expand="block"
+                            (click)="onSwitchAuthMode()"
+                    >Switch to {{ isLogin ? 'SignUp' : 'Login'}}
 
-    <ion-button color="primary" (click)="onLogin()">
-        Login
-    </ion-button>
+                    </ion-button>
+                    <ion-button [disabled]="f.invalid" type="submit"
+                                color="primary"
+                                expand="block"
+                                (click)="onLogin()">
+                        Login
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+        <!--    <div class="ion-text-center">-->
+        <!--        <ion-spinner color="primary" *ngIf="isLoading"></ion-spinner>-->
+        <!--    </div>-->
+    </form>
+
 </ion-content>

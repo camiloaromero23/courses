@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
     ActionSheetController,
+    AlertController,
     LoadingController,
     ModalController,
     NavController,
@@ -21,6 +22,7 @@ import { AuthService } from '../../../auth/auth.service';
 export class PlaceDetailPage implements OnInit, OnDestroy {
     place: Place;
     isBookable = false;
+    isLoading = false;
     private placeSubscription: Subscription;
 
     constructor(
@@ -31,7 +33,9 @@ export class PlaceDetailPage implements OnInit, OnDestroy {
         private actionSheetController: ActionSheetController,
         private bookingService: BookingService,
         private loadingController: LoadingController,
+        private alertController: AlertController,
         private authService: AuthService,
+        private router: Router,
     ) {}
 
     ngOnInit() {
@@ -40,12 +44,39 @@ export class PlaceDetailPage implements OnInit, OnDestroy {
                 this.navController.navigateBack('/places/tabs/discover').then();
                 return;
             }
+            this.isLoading = true;
             this.placeSubscription = this.placesService
                 .getPlace(paramMap.get('placeId'))
-                .subscribe((place) => {
-                    this.place = place;
-                    this.isBookable = place.userId !== this.authService.userId;
-                });
+                .subscribe(
+                    (place: Place) => {
+                        this.place = place;
+                        this.isBookable =
+                            place.userId !== this.authService.userId;
+                        this.isLoading = false;
+                    },
+                    () => {
+                        this.alertController
+                            .create({
+                                header: 'An error occurred!',
+                                message: 'Could not load place.',
+                                buttons: [
+                                    {
+                                        text: 'Okay',
+                                        handler: () => {
+                                            this.router
+                                                .navigate([
+                                                    '/places/tabs/discover',
+                                                ])
+                                                .then();
+                                        },
+                                    },
+                                ],
+                            })
+                            .then((alertElement) => {
+                                alertElement.present().then();
+                            });
+                    },
+                );
         });
     }
 
@@ -101,6 +132,7 @@ export class PlaceDetailPage implements OnInit, OnDestroy {
                         .then((loadingElement) => {
                             loadingElement.present().then();
                             const data = resultData.data.bookingData;
+                            console.info(data);
                             this.bookingService
                                 .addBooking(
                                     this.place.id,
@@ -109,8 +141,8 @@ export class PlaceDetailPage implements OnInit, OnDestroy {
                                     data.firstName,
                                     data.lastName,
                                     +data.guestNumber,
-                                    data.startDate,
-                                    data.endDate,
+                                    data.dateFrom,
+                                    data.dateTo,
                                 )
                                 .subscribe(() => {
                                     loadingElement.dismiss().then();

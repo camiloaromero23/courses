@@ -63,7 +63,16 @@ export class CreateBookingComponent implements OnInit {
             return;
         }
         this.modalController
-            .dismiss({ bookingData: { ...this.bookingForm.value } }, 'confirm')
+            .dismiss(
+                {
+                    bookingData: {
+                        ...this.bookingForm.value,
+                        startDate: this.bookingForm.value.startDate,
+                        endDate: this.bookingForm.value.endDate,
+                    },
+                },
+                'confirm',
+            )
             .then();
     }
 }

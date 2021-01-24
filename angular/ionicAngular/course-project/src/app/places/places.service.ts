@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Place } from './place.model';
 import { AuthService } from '../auth/auth.service';
-import { BehaviorSubject } from 'rxjs';
-import { delay, map, take, tap } from 'rxjs/operators';
+import { BehaviorSubject, of } from 'rxjs';
+import { map, switchMap, take, tap } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { URL } from '../../environments/environment';
 
-@Injectable({
-    providedIn: 'root',
-})
-export class PlacesService {
-    // tslint:disable-next-line:variable-name
-    private _places = new BehaviorSubject<Place[]>([
+/*
+[
         new Place(
             'p1',
             'Manhattan Mansion',
@@ -40,19 +38,75 @@ export class PlacesService {
             new Date('2019-12-31'),
             'abc',
         ),
-    ]);
+]
+     */
 
-    constructor(private authService: AuthService) {}
+interface PlaceData {
+    availableFrom: string;
+    availableTo: string;
+    description: string;
+    imageUrl: string;
+    price: number;
+    title: string;
+    userId: string;
+}
+
+@Injectable({
+    providedIn: 'root',
+})
+export class PlacesService {
+    // tslint:disable-next-line:variable-name
+    private _places = new BehaviorSubject<Place[]>([]);
+
+    constructor(private authService: AuthService, private http: HttpClient) {}
+
+    fetchPlaces() {
+        return this.http
+            .get<{ [key: string]: PlaceData }>(`${URL}/offered-places.json`)
+            .pipe(
+                map((resData) => {
+                    const places = [];
+                    for (const key in resData) {
+                        if (resData.hasOwnProperty(key)) {
+                            places.push(
+                                new Place(
+                                    key,
+                                    resData[key].title,
+                                    resData[key].description,
+                                    resData[key].imageUrl,
+                                    resData[key].price,
+                                    new Date(resData[key].availableFrom),
+                                    new Date(resData[key].availableTo),
+                                    resData[key].userId,
+                                ),
+                            );
+                        }
+                    }
+                    return places;
+                }),
+                tap((places) => {
+                    this._places.next(places);
+                }),
+            );
+    }
 
     get places() {
         return this._places.asObservable();
     }
 
     getPlace(id: string) {
-        return this._places.pipe(
-            take(1),
-            map((places) => {
-                return { ...places.find((place) => place.id === id) };
+        return this.http.get(`${URL}/offered-places/${id}.json`).pipe(
+            map<PlaceData>((placeData) => {
+                return new Place(
+                    id,
+                    placeData.title,
+                    placeData.description,
+                    placeData.imageUrl,
+                    placeData.price,
+                    new Date(placeData.availableFrom),
+                    new Date(placeData.availableTo),
+                    placeData.userId,
+                );
             }),
         );
     }
@@ -64,6 +118,7 @@ export class PlacesService {
         dateFrom: Date,
         dateTo: Date,
     ) {
+        let generatedId: string;
         const newPlace = new Place(
             Math.random().toString(),
             title,
@@ -74,26 +129,53 @@ export class PlacesService {
             dateTo,
             this.authService.userId,
         );
-        return this._places.pipe(
+        return this.http
+            .post<{ name: string }>(`${URL}/offered-places.json`, {
+                ...newPlace,
+                id: null,
+            })
+            .pipe(
+                // take(1),
+                // tap((places) => {
+                //     this._places.next([...places, newPlace]);
+                // }),
+                switchMap((resData) => {
+                    generatedId = resData.name;
+                    return this.places;
+                }),
+                take(1),
+                tap((places) => {
+                    newPlace.id = generatedId;
+                    this._places.next([...places, newPlace]);
+                }),
+            );
+        /*return this._places.pipe(
             take(1),
             delay(1000),
             tap((places) => {
                 this._places.next([...places, newPlace]);
             }),
-        );
+        );*/
     }
 
     updatePlace(placeId: string, title: string, description: string) {
-        return this._places.pipe(
+        let updatedPlaces: Place[];
+        return this.places.pipe(
             take(1),
-            delay(1000),
-            tap((places: Place[]) => {
-                const updatePlaceIndex = places.findIndex(
+            switchMap<Place[]>((places) => {
+                if (!places || places.length <= 0) {
+                    return this.fetchPlaces();
+                } else {
+                    return of(places);
+                }
+            }),
+            switchMap<Place[]>((places) => {
+                const updatedPlaceIndex = places.findIndex(
                     (place) => place.id === placeId,
                 );
-                const updatedPlaces = [...places];
-                const oldPlace = updatedPlaces[updatePlaceIndex];
-                updatedPlaces[updatePlaceIndex] = new Place(
+                updatedPlaces = [...places];
+                const oldPlace = updatedPlaces[updatedPlaceIndex];
+                updatedPlaces[updatedPlaceIndex] = new Place(
                     oldPlace.id,
                     title,
                     description,
@@ -103,6 +185,12 @@ export class PlacesService {
                     oldPlace.availableTo,
                     oldPlace.userId,
                 );
+                return this.http.put(`${URL}/offered-places/${placeId}.json`, {
+                    ...updatedPlaces[updatedPlaceIndex],
+                    id: null,
+                });
+            }),
+            tap(() => {
                 this._places.next(updatedPlaces);
             }),
         );

@@ -78,7 +78,7 @@ ul {
   list-style-type: none;
 }
 li {
-  background-color: white;
+  background-color: White;
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   cursor: pointer;

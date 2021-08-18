@@ -4,6 +4,7 @@
       <li
         v-for="pokemon in pokemons"
         :key="pokemon.id"
+        :disabled="optionsDisabled ? disabled : ''"
         @click="hasAnswer(pokemon.id)"
       >
         {{ pokemon.name }}
@@ -41,7 +42,7 @@ ul {
   list-style-type: none;
 }
 li {
-  background-color: white;
+  background-color: White;
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   cursor: pointer;
@@ -51,6 +52,12 @@ li {
 
 li:hover {
   background-color: rgba(0, 0, 0, 0.05);
+}
+
+li:disabled,
+li[disabled] {
+  /* background-color: White; */
+  cursor: not-allowed;
 }
 
 .options-container {

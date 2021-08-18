@@ -6,6 +6,7 @@
         :key="pokemon.id"
         :disabled="optionsDisabled ? disabled : ''"
         @click="hasAnswer(pokemon.id)"
+        :class="{ disabled: !optionsDisabled }"
       >
         {{ pokemon.name }}
       </li>
@@ -20,7 +21,6 @@ export default {
     pokemons: {
       type: Array,
       required: true,
-      /* default: [], */
     },
     optionsDisabled: {
       type: Boolean,
@@ -54,10 +54,9 @@ li:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-li:disabled,
-li[disabled] {
-  /* background-color: White; */
+.disabled:hover {
   cursor: not-allowed;
+  background-color: White;
 }
 
 .options-container {

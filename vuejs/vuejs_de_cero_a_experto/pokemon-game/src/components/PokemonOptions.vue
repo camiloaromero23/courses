@@ -6,7 +6,14 @@
         :key="pokemon.id"
         :disabled="optionsDisabled ? disabled : ''"
         @click="hasAnswer(pokemon.id)"
-        :class="{ disabled: !optionsDisabled }"
+        :class="{
+          disabled: !optionsDisabled,
+          'correct-pokemon': pokemonId === pokemon.id && !optionsDisabled,
+          'wrong-pokemon':
+            pokemonId !== selectedPokemon &&
+            pokemon.id === selectedPokemon &&
+            !optionsDisabled,
+        }"
       >
         {{ pokemon.name }}
       </li>
@@ -25,6 +32,12 @@ export default {
     optionsDisabled: {
       type: Boolean,
       required: true,
+    },
+    pokemonId: {
+      type: Number,
+    },
+    selectedPokemon: {
+      type: Number,
     },
   },
   methods: {
@@ -56,7 +69,15 @@ li:hover {
 
 .disabled:hover {
   cursor: not-allowed;
-  background-color: White;
+  /* background-color: White; */
+}
+
+.correct-pokemon {
+  border: 0.15rem solid Green;
+}
+
+.wrong-pokemon {
+  border: 0.15rem solid Red;
 }
 
 .options-container {

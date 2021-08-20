@@ -9,6 +9,8 @@
     <PokemonOptions
       :optionsDisabled="!showResult"
       :pokemons="pokemons"
+      :pokemonId="pokemon.id"
+      :selectedPokemon="selectedPokemon"
       @pokemonSelected="checkAnswer"
     ></PokemonOptions>
     <template v-if="showResult">
@@ -35,6 +37,7 @@ export default {
       showPokemon: false,
       showResult: false,
       message: '',
+      selectedPokemon: null,
     };
   },
   methods: {
@@ -55,6 +58,7 @@ export default {
         this.message = 'Correct! ';
       } else {
         this.message = 'Whoops! The right one was ';
+        this.selectedPokemon = pokemonId;
       }
       this.message += this.pokemon.name;
       this.toggleShowResult();
@@ -65,6 +69,7 @@ export default {
       this.mixPokemons();
       this.pokemons = [];
       this.pokemon = null;
+      this.selectedPokemon = null;
     },
   },
   mounted() {

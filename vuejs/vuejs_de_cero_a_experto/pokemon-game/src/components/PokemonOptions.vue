@@ -63,9 +63,9 @@ li {
   width: 250px;
 }
 
-li:hover {
-  background-color: rgba(0, 0, 0, 0.05);
-}
+/* li:hover { */
+/*   background-color: rgba(0, 0, 0, 0.05); */
+/* } */
 
 .disabled:hover {
   cursor: not-allowed;

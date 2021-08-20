@@ -7,7 +7,7 @@
       :showPokemon="showPokemon"
     ></PokemonPicture>
     <PokemonOptions
-      :optionsDisabled="!showResult"
+      :optionsEnabled="!showResult"
       :pokemons="pokemons"
       :pokemonId="pokemon.id"
       :selectedPokemon="selectedPokemon"

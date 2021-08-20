@@ -4,15 +4,15 @@
       <li
         v-for="pokemon in pokemons"
         :key="pokemon.id"
-        :disabled="optionsDisabled ? disabled : ''"
+        :disabled="optionsEnabled ? true : false"
         @click="hasAnswer(pokemon.id)"
         :class="{
-          disabled: !optionsDisabled,
-          'correct-pokemon': pokemonId === pokemon.id && !optionsDisabled,
+          disabled: !optionsEnabled,
+          'correct-pokemon': pokemonId === pokemon.id && !optionsEnabled,
           'wrong-pokemon':
             pokemonId !== selectedPokemon &&
             pokemon.id === selectedPokemon &&
-            !optionsDisabled,
+            !optionsEnabled,
         }"
       >
         {{ pokemon.name }}
@@ -23,13 +23,13 @@
 
 <script>
 export default {
-  name: 'PokemonPicture',
+  name: 'PokemonOptions',
   props: {
     pokemons: {
       type: Array,
       required: true,
     },
-    optionsDisabled: {
+    optionsEnabled: {
       type: Boolean,
       required: true,
     },
@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     hasAnswer(pokemonId) {
-      if (this.optionsDisabled) {
+      if (this.optionsEnabled) {
         this.$emit('pokemonSelected', pokemonId);
       }
     },

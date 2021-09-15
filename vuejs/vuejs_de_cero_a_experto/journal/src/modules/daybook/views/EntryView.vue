@@ -2,16 +2,27 @@
   <template v-if="entry">
     <div class="entry-title d-flex justify-content-between p-2">
       <div>
-        <span class="text-success fs-3 fw-bold">15</span>
-        <span class="mx-1 fs-3">July</span>
-        <span class="mx-2 fs-4 fw-light">2021, thursday</span>
+        <span class="text-success fs-3 fw-bold">{{ day }}</span>
+        <span class="mx-1 fs-3">{{ month }}</span>
+        <span class="mx-2 fs-4 fw-light">{{ yearDay }}</span>
       </div>
 
       <div>
-        <button class="btn btn-danger mx-2">
+        <input
+          type="file"
+          @change="onSelectedImage"
+          ref="imageSelector"
+          v-show="false"
+          accept="image/png, image/jpeg, image/webp"
+        />
+        <button
+          v-if="entry.id"
+          @click="onDeleteEntry"
+          class="btn btn-danger mx-2"
+        >
           Delete <i class="fa fa-trash-alt"></i>
         </button>
-        <button class="btn btn-primary">
+        <button @click="onSelectImage" class="btn btn-primary">
           Upload photo <i class="fa fa-upload"></i>
         </button>
       </div>
@@ -24,18 +35,32 @@
         placeholder="What happened today?"
       ></textarea>
     </div>
+
     <img
-      src="https://hipertextual.com/wp-content/uploads/2021/05/darth-vader.jpeg"
+      v-if="entry.picture && !localImage"
+      :src="entry.picture"
+      alt="entryPicture"
+      class="img-thumbnail"
+    />
+
+    <img
+      v-if="localImage"
+      :src="localImage"
       alt="entryPicture"
       class="img-thumbnail"
     />
   </template>
-  <Fab icon="fa-save" />
+  <Fab icon="fa-save" @on:click="saveEntry" />
 </template>
 
 <script>
 import { defineAsyncComponent } from 'vue';
-import { mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
+import getDayMonthYear from '../helpers/getDayMonthYear';
+
+import Swal from 'sweetalert2';
+import uploadImage from '../helpers/uploadImage';
+
 export default {
   props: {
     id: {
@@ -49,19 +74,98 @@ export default {
   data() {
     return {
       entry: null,
+      localImage: null,
+      file: null,
     };
   },
   computed: {
     ...mapGetters('journal', ['getEntryById']),
+    day() {
+      const { day } = getDayMonthYear(this.entry.date);
+      return day;
+    },
+    month() {
+      const { month } = getDayMonthYear(this.entry.date);
+      return month;
+    },
+    yearDay() {
+      const { yearDay } = getDayMonthYear(this.entry.date);
+      return yearDay;
+    },
   },
   methods: {
+    ...mapActions('journal', ['updateEntry', 'createEntry', 'deleteEntry']),
     loadEntry() {
-      const entry = this.getEntryById(this.id);
-      if (!entry) {
-        return this.$router.push({ name: 'noEntry' });
+      let entry;
+      if (this.id === 'new') {
+        entry = {
+          text: '',
+          date: new Date().getTime(),
+        };
+      } else {
+        entry = this.getEntryById(this.id);
+        if (!entry) {
+          return this.$router.push({ name: 'noEntry' });
+        }
       }
       this.entry = entry;
       console.log(entry);
+    },
+    async saveEntry() {
+      new Swal({
+        title: 'Please wait',
+        allowOutsideClick: false,
+      });
+      Swal.showLoading();
+      const picture = await uploadImage(this.file);
+      this.entry.picture = picture;
+
+      if (this.entry.id) {
+        console.log('saving entry');
+        await this.updateEntry(this.entry);
+      } else {
+        console.log('New Entry Post');
+        const id = await this.createEntry(this.entry);
+        this.$router.push({ name: 'entry', params: { id } });
+      }
+
+      this.file = null;
+      Swal.fire('Saved', 'Entry successfully registered', 'success');
+    },
+    async onDeleteEntry() {
+      const { isConfirmed } = await Swal.fire({
+        title: 'Are you sure?',
+        text: 'Once deleted, cannot be recovered',
+        showDenyButton: true,
+        confirmButtonText: "Yes, I'm sure",
+      });
+      if (isConfirmed) {
+        new Swal({
+          title: 'Please wait',
+          allowOutsideClick: false,
+        });
+        Swal.showLoading();
+        console.log('delete', this.entry.id);
+        await this.deleteEntry(this.entry.id);
+        this.$router.push({ name: 'noEntry' });
+        Swal.fire('Deleted', '', 'success');
+      }
+    },
+    onSelectedImage(event) {
+      const file = event.target.files[0];
+      if (!file) {
+        this.localImage = null;
+        this.file = null;
+        return;
+      }
+      this.file = file;
+
+      const fr = new FileReader();
+      fr.onload = () => (this.localImage = fr.result);
+      fr.readAsDataURL(file);
+    },
+    onSelectImage() {
+      this.$refs.imageSelector.click();
     },
   },
   created() {

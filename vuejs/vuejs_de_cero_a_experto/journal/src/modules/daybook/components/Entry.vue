@@ -53,7 +53,7 @@ export default {
 
   &:hover {
     background-color: lighten($color: Grey, $amount: 45);
-    transition: 0.2s all ease-in();
+    transition: 0.2s all ease-in;
   }
   .entry-description {
     font-size: 12px;

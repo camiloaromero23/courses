@@ -62,6 +62,7 @@ import Swal from 'sweetalert2';
 import uploadImage from '../helpers/uploadImage';
 
 export default {
+  name: 'EntryView',
   props: {
     id: {
       type: String,
@@ -112,7 +113,7 @@ export default {
       console.log(entry);
     },
     async saveEntry() {
-      new Swal({
+      Swal.fire({
         title: 'Please wait',
         allowOutsideClick: false,
       });
@@ -140,7 +141,7 @@ export default {
         confirmButtonText: "Yes, I'm sure",
       });
       if (isConfirmed) {
-        new Swal({
+        Swal.fire({
           title: 'Please wait',
           allowOutsideClick: false,
         });

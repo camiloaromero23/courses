@@ -54,7 +54,7 @@ export default {
     const router = useRouter();
     const { loginUser } = useAuth();
 
-    const loginForm = ref({ email: 'test@test.com', password: '123456' });
+    const loginForm = ref({ email: '', password: '' });
     return {
       loginForm,
       onSubmit: async () => {

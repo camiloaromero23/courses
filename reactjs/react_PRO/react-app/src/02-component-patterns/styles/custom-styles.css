@@ -21,3 +21,9 @@
   color: White;
   border-color: White;
 }
+
+.shopping-cart {
+  position: fixed;
+  right: 10px;
+  top: 0px;
+}

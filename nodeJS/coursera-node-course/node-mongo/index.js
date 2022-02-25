@@ -37,5 +37,5 @@ try {
 } catch ( err ) {
   console.log( "Error 😢", err.message );
 } finally {
-  await client.close();
+  await client && client.close();
 }

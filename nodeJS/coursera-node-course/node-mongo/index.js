@@ -1,31 +1,41 @@
 import { MongoClient } from 'mongodb';
 import assert from 'assert';
 import { exit } from 'process';
+import { findDocuments, insertDocument, removeDocument, updateDocument } from './operations.js'
 
 const url = 'mongodb://root:root@localhost:27017/';
 const dbName = 'conFusion';
+let client;
 
 try {
-  const client = await MongoClient.connect( url );
+  client = await MongoClient.connect( url );
   const db = client.db( dbName );
 
-  const collection = db.collection( "dishes" )
+  await insertDocument(
+    db,
+    [{ "name": "Second Dish", "description": "Second dish description" }],
+    "dishes"
+  );
 
-  const val = await collection.insertOne( { "name": "Second Dish", "description": "Second dish description" } )
+  await findDocuments( db, 'dishes' );
 
-  if ( !val.acknowledged ) {
-    console.log( "Error inserting" );
-    exit( 1 );
-  }
-  const find = await collection.find( {} ).toArray()
-  console.log( "Found" );
-  console.log( find );
+  await updateDocument(
+    db,
+    { name: "Second Dish" },
+    { "description": "updated desc" },
+    'dishes'
+  );
+
+  await findDocuments( db, 'dishes' );
+
   const res = await db.dropCollection( 'dishes' );
-  if ( !res ) {
-    console.log( "Invalid result" );
+  if ( res ) {
+    console.log( "Dropped collection" );
+  } else {
+    console.log( "Could not drop collection" );
   }
-  await client.close();
-
 } catch ( err ) {
-  console.log( "Error connecting 😢", err.message );
+  console.log( "Error 😢", err.message );
+} finally {
+  await client.close();
 }

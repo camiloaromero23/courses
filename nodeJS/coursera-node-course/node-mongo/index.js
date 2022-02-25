@@ -1,6 +1,4 @@
 import { MongoClient } from 'mongodb';
-import assert from 'assert';
-import { exit } from 'process';
 import { findDocuments, insertDocument, removeDocument, updateDocument } from './operations.js'
 
 const url = 'mongodb://root:root@localhost:27017/';

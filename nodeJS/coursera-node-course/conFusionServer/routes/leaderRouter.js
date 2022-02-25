@@ -1,5 +1,5 @@
-const express = require( "express" );
-const bodyParser = require( "body-parser" );
+import express from "express";
+import bodyParser from "body-parser";
 
 const leaderRouter = express.Router()
 
@@ -58,4 +58,4 @@ leaderRouter.delete( '/:leaderId', ( req, res ) => {
   res.send( `Deleting leader: ${req.params.leaderId}` );
 } );
 
-module.exports = leaderRouter;
+export default leaderRouter;

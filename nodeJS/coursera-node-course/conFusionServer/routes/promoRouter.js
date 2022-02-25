@@ -1,5 +1,5 @@
-const express = require( "express" );
-const bodyParser = require( "body-parser" );
+import express from "express";
+import bodyParser from "body-parser";
 
 const promoRouter = express.Router()
 
@@ -58,4 +58,4 @@ promoRouter.delete( '/:promoId', ( req, res ) => {
   res.send( `Deleting promotion: ${req.params.promoId}` );
 } );
 
-module.exports = promoRouter;
+export default promoRouter;

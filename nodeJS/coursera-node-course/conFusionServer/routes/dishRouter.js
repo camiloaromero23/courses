@@ -1,40 +1,45 @@
-const express = require( 'express' );
-const bodyParser = require( 'body-parser' );
+import express from 'express';
+import bodyParser from 'body-parser';
+import mongoose from 'mongoose';
+
+import { Dishes } from '../models/dishes.js';
 
 const dishRouter = express.Router();
 
 dishRouter.use( bodyParser.json() );
 
-// dishRouter.route( '/' );
-
-dishRouter.all( '/', ( req, res, next ) => {
-  res.setHeader( 'Content-Type', 'text/plain' );
-  res.status( 200 );
-  next();
+dishRouter.get( '/', async ( req, res, next ) => {
+  try {
+    const dishes = await Dishes.find( {} );
+    res.status( 200 ).json( dishes );
+  } catch ( err ) { next( err ) }
 } );
 
-dishRouter.get( '/', ( req, res ) => {
-  res.send( 'Will send all dishes' );
+dishRouter.post( '/', async ( req, res, next ) => {
+  try {
+    const dish = await Dishes.create( req.body )
+    res.status( 201 ).json( dish );
+  } catch ( err ) { next( err ) }
 } );
 
-dishRouter.post( '/', ( req, res ) => {
-  res.send(
-    `Will add the dish: ${req.body.name} with details ${req.body.description}`
-  );
-} );
-
-dishRouter.put( '/', ( req, res ) => {
+dishRouter.put( '/', ( req, res, next ) => {
   res.status( 403 ).send(
     `PUT operation not supported on /dishes`
   );
 } );
 
-dishRouter.delete( '/', ( req, res ) => {
-  res.send( 'Deleting all the dishes' )
+dishRouter.delete( '/', async ( req, res, next ) => {
+  try {
+    const response = await Dishes.remove( {} )
+    res.status( 200 ).json( response );
+  } catch ( err ) { next( err ) }
 } );
 
-dishRouter.get( '/:dishId', ( req, res ) => {
-  res.send( `Will send details of the dish: ${req.params.dishId}` );
+dishRouter.get( '/:dishId', async ( req, res, next ) => {
+  try {
+    const dish = await Dishes.findById( req.params.dishId );
+    res.status( 200 ).json( dish )
+  } catch ( err ) { next( err ) }
 } );
 
 dishRouter.post( '/:dishId', ( req, res ) => {
@@ -43,15 +48,21 @@ dishRouter.post( '/:dishId', ( req, res ) => {
   );
 } );
 
-dishRouter.put( '/:dishId', ( req, res ) => {
-  res.write( `Updating the dish ${req.params.dishId}\n` )
-  res.end(
-    `Will update the dish: ${req.body.name} with details: ${req.body.description}`
-  )
+dishRouter.put( '/:dishId', async ( req, res, next ) => {
+  try {
+    const dish = await Dishes.findByIdAndUpdate( req.params.dishId, {
+      $set: req.body
+    }, { new: true } );
+
+    res.status( 200 ).json( dish )
+  } catch ( err ) { next( err ) }
 } );
 
-dishRouter.delete( '/:dishId', ( req, res ) => {
-  res.send( `Deleting dish: ${req.params.dishId}` );
+dishRouter.delete( '/:dishId', async ( req, res, next ) => {
+  try {
+    const response = await Dishes.findByIdAndRemove( req.params.dishId );
+    res.status( 200 ).json( response );
+  } catch ( err ) { next( err ) }
 } );
 
-module.exports = dishRouter;
+export default dishRouter;

@@ -4,6 +4,8 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import bodyParser from 'body-parser';
 import dishRouter from './routes/dishRouter.js';
+import promoRouter from './routes/promoRouter.js';
+import leaderRouter from './routes/leaderRouter.js';
 
 const __filename = fileURLToPath( import.meta.url );
 const __dirname = dirname( __filename );
@@ -17,6 +19,8 @@ app.use( morgan( 'dev' ) );
 app.use( bodyParser.json() );
 
 app.use( '/dishes', dishRouter );
+app.use( '/promotions', promoRouter );
+app.use( '/leaders', leaderRouter );
 
 app.use( express.static( `${__dirname}/public` ) );
 

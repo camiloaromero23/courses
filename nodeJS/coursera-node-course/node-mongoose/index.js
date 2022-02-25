@@ -10,12 +10,23 @@ try {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   } )
-  await Dishes.create( {
+  let dish = await Dishes.create( {
     name: 'Dish',
     description: 'Dish description'
   } )
-  const res = await Dishes.find( {} ).exec()
-  console.log( res );
+  dish = await Dishes.findByIdAndUpdate( dish._id, {
+    $set: { description: 'Updated test' },
+    new: true
+  } ).exec()
+  console.log( dish );
+  dish.comments.push( {
+    rating: 5,
+    comment: "Nice dish",
+    author: "Myself",
+  } );
+  dish = await dish.save();
+  console.log( "Updated" );
+  console.log( dish );
   await Dishes.deleteMany( {} )
   console.log( "Cleaned collection" );
 } catch ( err ) {

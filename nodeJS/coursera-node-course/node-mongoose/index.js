@@ -10,11 +10,10 @@ try {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   } )
-  const newDish = Dishes( {
+  await Dishes.create( {
     name: 'Dish',
     description: 'Dish description'
   } )
-  await newDish.save()
   const res = await Dishes.find( {} ).exec()
   console.log( res );
   await Dishes.deleteMany( {} )

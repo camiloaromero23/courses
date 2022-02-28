@@ -8,6 +8,8 @@ import logger from 'morgan';
 import mongoose from 'mongoose';
 import session from 'express-session';
 import sessionFileStore from 'session-file-store';
+import passport from 'passport';
+import { localAuthentication } from './authenticate.js';
 
 import indexRouter from './routes/index.js';
 import usersRouter from './routes/users.js';
@@ -52,21 +54,17 @@ app.use( session( {
   store: new FileStore(),
 } ) );
 
+app.use( passport.initialize() );
+app.use( passport.session() );
+
 app.use( '/', indexRouter );
 app.use( '/users', usersRouter );
 
 const auth = ( req, res, next ) => {
-  const { user } = req.session;
-  if ( !user || user !== 'authenticated' ) {
+  const { user } = req;
+  if ( !user ) {
     const err = new Error( 'You are not authenticated' );
-
-    if ( user ) {
-      err.status = 403;
-    } else {
-      res.setHeader( "WWW-Authenticate", 'Basic' );
-      err.status = 401;
-    }
-
+    err.status = 403;
     return next( err );
   }
   return next();

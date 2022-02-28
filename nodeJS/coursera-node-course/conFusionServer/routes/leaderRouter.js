@@ -1,30 +1,24 @@
 import express from "express";
 import bodyParser from "body-parser";
 
-const leaderRouter = express.Router()
+import { Leaders } from '../models/leaders.js';
+
+const leaderRouter = express.Router();
 
 leaderRouter.use( bodyParser.json() );
 
-leaderRouter.all( '/', ( req, res, next ) => {
-  res.setHeader( 'Content-Type', 'text/plain' );
-  res.status( 200 );
-  next();
-} );
-
-leaderRouter.all( '/', ( req, res, next ) => {
-  res.setHeader( 'Content-Type', 'text/plain' );
-  res.status( 200 );
-  next();
-} );
-
 leaderRouter.get( '/', ( req, res ) => {
-  res.send( 'Will send all leaders' );
+  try {
+    const leaders = await Leaders.find( {} );
+    res.status( 200 ).json( leaders );
+  } catch ( err ) { next( err ); }
 } );
 
 leaderRouter.post( '/', ( req, res ) => {
-  res.send(
-    `Will add the leader: ${req.body.name} with details ${req.body.description}`
-  );
+  try {
+    const leader = await Leaders.create( req.body );
+    res.status( 200 ).json( leader );
+  } catch ( err ) { next( err ); }
 } );
 
 leaderRouter.put( '/', ( req, res ) => {
@@ -34,11 +28,17 @@ leaderRouter.put( '/', ( req, res ) => {
 } );
 
 leaderRouter.delete( '/', ( req, res ) => {
-  res.send( 'Deleting all the leaders' )
+  try {
+    const leaders = await Leaders.remove( {} );
+    res.status( 200 ).json( leaders );
+  } catch ( err ) { next( err ); }
 } );
 
 leaderRouter.get( '/:leaderId', ( req, res ) => {
-  res.send( `Will send details of the leader: ${req.params.leaderId}` );
+  try {
+    const leader = await Leaders.findById( req.params.leaderId );
+    res.status( 200 ).json( leader );
+  } catch ( err ) { next( err ); }
 } );
 
 leaderRouter.post( '/:leaderId', ( req, res ) => {
@@ -48,14 +48,17 @@ leaderRouter.post( '/:leaderId', ( req, res ) => {
 } );
 
 leaderRouter.put( '/:leaderId', ( req, res ) => {
-  res.write( `Updating the leader ${req.params.leaderId}\n` )
-  res.end(
-    `Will update the leader: ${req.body.name} with details: ${req.body.description}`
-  )
+  try {
+    const leader = await Leaders.findByIdAndUpdate( req.params.leaderId, { $set: req.body }, { new: true } );
+    res.status( 200 ).json( leader );
+  } catch ( err ) { next( err ); }
 } );
 
 leaderRouter.delete( '/:leaderId', ( req, res ) => {
-  res.send( `Deleting leader: ${req.params.leaderId}` );
+  try {
+    const response = await Leaders.findByIdAndRemove( req.params.leaderId );
+    res.status( 200 ).json( response );
+  } catch ( err ) { next( err ); }
 } );
 
 export default leaderRouter;

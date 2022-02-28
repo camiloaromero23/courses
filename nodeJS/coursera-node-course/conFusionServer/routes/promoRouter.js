@@ -1,30 +1,23 @@
 import express from "express";
 import bodyParser from "body-parser";
+import { Promotions } from '../models/promotions.js';
 
-const promoRouter = express.Router()
+const promoRouter = express.Router();
 
 promoRouter.use( bodyParser.json() );
 
-promoRouter.all( '/', ( req, res, next ) => {
-  res.setHeader( 'Content-Type', 'text/plain' );
-  res.status( 200 );
-  next();
-} );
-
-promoRouter.all( '/', ( req, res, next ) => {
-  res.setHeader( 'Content-Type', 'text/plain' );
-  res.status( 200 );
-  next();
-} );
-
 promoRouter.get( '/', ( req, res ) => {
-  res.send( 'Will send all promotions' );
+  try {
+    const promotions = await Promotions.find( {} );
+    res.status( 200 ).json( promotions );
+  } catch ( err ) { next( err ); }
 } );
 
 promoRouter.post( '/', ( req, res ) => {
-  res.send(
-    `Will add the promotion: ${req.body.name} with details ${req.body.description}`
-  );
+  try {
+    const promotions = await Promotions.create( req.body );
+    res.status( 201 ).json( promotions );
+  } catch ( err ) { next( err ); }
 } );
 
 promoRouter.put( '/', ( req, res ) => {
@@ -34,11 +27,17 @@ promoRouter.put( '/', ( req, res ) => {
 } );
 
 promoRouter.delete( '/', ( req, res ) => {
-  res.send( 'Deleting all the promotions' )
+  try {
+    const response = await Promotions.remove( {} );
+    res.status( 200 ).json( response );
+  } catch ( err ) { next( err ); }
 } );
 
 promoRouter.get( '/:promoId', ( req, res ) => {
-  res.send( `Will send details of the promotion: ${req.params.promoId}` );
+  try {
+    const promotion = await Promotions.findById( req.params.promoId );
+    res.status( 200 ).json( promotion );
+  } catch ( err ) { next( err ); }
 } );
 
 promoRouter.post( '/:promoId', ( req, res ) => {
@@ -48,14 +47,20 @@ promoRouter.post( '/:promoId', ( req, res ) => {
 } );
 
 promoRouter.put( '/:promoId', ( req, res ) => {
-  res.write( `Updating the promotion ${req.params.promoId}\n` )
-  res.end(
-    `Will update the promotion: ${req.body.name} with details: ${req.body.description}`
-  )
+  try {
+    const promotion = await Promotions.findByIdAndUpdate( req.params.promoId, {
+      $set: req.body
+    }, { new: true } );
+
+    res.status( 200 ).json( promotion );
+  } catch ( err ) { next( err ); }
 } );
 
 promoRouter.delete( '/:promoId', ( req, res ) => {
-  res.send( `Deleting promotion: ${req.params.promoId}` );
+  try {
+    const response = await Promotions.findByIdAndRemove( req.params.promoId );
+    res.status( 200 ).json( response );
+  } catch ( err ) { next( err ); }
 } );
 
 export default promoRouter;

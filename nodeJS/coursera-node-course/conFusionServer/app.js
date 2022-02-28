@@ -6,6 +6,8 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import mongoose from 'mongoose';
+import session from 'express-session';
+import sessionFileStore from 'session-file-store';
 
 import indexRouter from './routes/index.js';
 import usersRouter from './routes/users.js';
@@ -31,6 +33,7 @@ try {
 } catch ( error ) {
   console.log( "Error connecting to db 😢" );
 }
+const FileStore = sessionFileStore( session );
 const app = express();
 
 // view engine setup
@@ -40,11 +43,18 @@ app.set( 'view engine', 'jade' );
 app.use( logger( 'dev' ) );
 app.use( express.json() );
 app.use( express.urlencoded( { extended: false } ) );
-app.use( cookieParser( SECRET_KEY ) );
+// app.use( cookieParser( SECRET_KEY ) );
+app.use( session( {
+  name: 'session-id',
+  secret: SECRET_KEY,
+  saveUninitialized: false,
+  resave: false,
+  store: new FileStore(),
+} ) );
 
 const auth = ( req, res, next ) => {
   const { authorization: authHeader } = req.headers;
-  const { user } = req.signedCookies;
+  const { user } = req.session;
   if ( !user ) {
 
     if ( !authHeader ) {
@@ -73,7 +83,7 @@ const auth = ( req, res, next ) => {
       return next( err );
     }
 
-    res.cookie( 'user', 'admin', { signed: true } );
+    req.session.user = 'admin';
     return next();
   }
   if ( user === 'admin' ) {

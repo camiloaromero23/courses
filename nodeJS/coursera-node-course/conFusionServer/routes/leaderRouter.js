@@ -7,54 +7,54 @@ const leaderRouter = express.Router();
 
 leaderRouter.use( bodyParser.json() );
 
-leaderRouter.get( '/', ( req, res ) => {
+leaderRouter.get( '/', async ( req, res ) => {
   try {
     const leaders = await Leaders.find( {} );
     res.status( 200 ).json( leaders );
   } catch ( err ) { next( err ); }
 } );
 
-leaderRouter.post( '/', ( req, res ) => {
+leaderRouter.post( '/', async ( req, res ) => {
   try {
     const leader = await Leaders.create( req.body );
     res.status( 200 ).json( leader );
   } catch ( err ) { next( err ); }
 } );
 
-leaderRouter.put( '/', ( req, res ) => {
+leaderRouter.put( '/', async ( req, res ) => {
   res.status( 403 ).send(
     `PUT operation not supported on /leaders`
   );
 } );
 
-leaderRouter.delete( '/', ( req, res ) => {
+leaderRouter.delete( '/', async ( req, res ) => {
   try {
     const leaders = await Leaders.remove( {} );
     res.status( 200 ).json( leaders );
   } catch ( err ) { next( err ); }
 } );
 
-leaderRouter.get( '/:leaderId', ( req, res ) => {
+leaderRouter.get( '/:leaderId', async ( req, res ) => {
   try {
     const leader = await Leaders.findById( req.params.leaderId );
     res.status( 200 ).json( leader );
   } catch ( err ) { next( err ); }
 } );
 
-leaderRouter.post( '/:leaderId', ( req, res ) => {
+leaderRouter.post( '/:leaderId', async ( req, res ) => {
   res.status( 403 ).send(
     `POST operation not supported on /leaders/${req.params.leaderId}`
   );
 } );
 
-leaderRouter.put( '/:leaderId', ( req, res ) => {
+leaderRouter.put( '/:leaderId', async ( req, res ) => {
   try {
     const leader = await Leaders.findByIdAndUpdate( req.params.leaderId, { $set: req.body }, { new: true } );
     res.status( 200 ).json( leader );
   } catch ( err ) { next( err ); }
 } );
 
-leaderRouter.delete( '/:leaderId', ( req, res ) => {
+leaderRouter.delete( '/:leaderId', async ( req, res ) => {
   try {
     const response = await Leaders.findByIdAndRemove( req.params.leaderId );
     res.status( 200 ).json( response );

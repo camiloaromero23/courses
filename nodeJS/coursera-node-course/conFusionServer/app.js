@@ -5,14 +5,13 @@ import express from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
 import indexRouter from './routes/index.js';
 import usersRouter from './routes/users.js';
 import dishRouter from './routes/dishRouter.js';
 import promoRouter from './routes/promoRouter.js';
 import leaderRouter from './routes/leaderRouter.js';
-import { Dishes } from './models/dishes.js'
 
 const __filename = fileURLToPath( import.meta.url );
 const __dirname = dirname( __filename );
@@ -29,7 +28,7 @@ try {
   console.log( "Connected to db" );
 
 } catch ( error ) {
-  console.log( "Error connecting to db 😢" )
+  console.log( "Error connecting to db 😢" );
 }
 const app = express();
 
@@ -41,6 +40,40 @@ app.use( logger( 'dev' ) );
 app.use( express.json() );
 app.use( express.urlencoded( { extended: false } ) );
 app.use( cookieParser() );
+
+const auth = ( req, res, next ) => {
+  const { authorization: authHeader } = req.headers;
+  if ( !authHeader ) {
+    const err = new Error( 'You are not authenticated' );
+
+    res.setHeader( "WWW-Authenticate", 'Basic' );
+
+    err.status = 401;
+    return next( err );
+  }
+
+  const auth = Buffer.from( authHeader.split( ' ' )[1], 'base64' )
+    .toString()
+    .split( ':' );
+
+  const [username, password] = auth;
+
+  const isAuthenticated = username === 'admin' && password === 'password';
+
+  if ( !isAuthenticated ) {
+    const err = new Error( 'You are not authenticated' );
+
+    res.setHeader( "WWW-Authenticate", 'Basic' );
+
+    err.status = 401;
+    return next( err );
+  }
+
+  return next();
+};
+
+app.use( auth );
+
 app.use( express.static( path.join( __dirname, 'public' ) ) );
 
 app.use( '/', indexRouter );

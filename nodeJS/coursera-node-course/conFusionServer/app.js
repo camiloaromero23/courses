@@ -17,6 +17,7 @@ const __filename = fileURLToPath( import.meta.url );
 const __dirname = dirname( __filename );
 
 const url = 'mongodb://localhost:27017/conFusion';
+const SECRET_KEY = '12345-67890-09876-54321';
 try {
   await mongoose.connect( url, {
     authSource: "admin",
@@ -39,37 +40,49 @@ app.set( 'view engine', 'jade' );
 app.use( logger( 'dev' ) );
 app.use( express.json() );
 app.use( express.urlencoded( { extended: false } ) );
-app.use( cookieParser() );
+app.use( cookieParser( SECRET_KEY ) );
 
 const auth = ( req, res, next ) => {
   const { authorization: authHeader } = req.headers;
-  if ( !authHeader ) {
-    const err = new Error( 'You are not authenticated' );
+  const { user } = req.signedCookies;
+  if ( !user ) {
 
-    res.setHeader( "WWW-Authenticate", 'Basic' );
+    if ( !authHeader ) {
+      const err = new Error( 'You are not authenticated' );
 
-    err.status = 401;
-    return next( err );
+      res.setHeader( "WWW-Authenticate", 'Basic' );
+
+      err.status = 401;
+      return next( err );
+    }
+
+    const auth = Buffer.from( authHeader.split( ' ' )[1], 'base64' )
+      .toString()
+      .split( ':' );
+
+    const [username, password] = auth;
+
+    const isAuthenticated = username === 'admin' && password === 'password';
+
+    if ( !isAuthenticated ) {
+      const err = new Error( 'You are not authenticated' );
+
+      res.setHeader( "WWW-Authenticate", 'Basic' );
+
+      err.status = 401;
+      return next( err );
+    }
+
+    res.cookie( 'user', 'admin', { signed: true } );
+    return next();
   }
-
-  const auth = Buffer.from( authHeader.split( ' ' )[1], 'base64' )
-    .toString()
-    .split( ':' );
-
-  const [username, password] = auth;
-
-  const isAuthenticated = username === 'admin' && password === 'password';
-
-  if ( !isAuthenticated ) {
-    const err = new Error( 'You are not authenticated' );
-
-    res.setHeader( "WWW-Authenticate", 'Basic' );
-
-    err.status = 401;
-    return next( err );
+  if ( user === 'admin' ) {
+    return next();
   }
+  const err = new Error( 'You are not authenticated' );
 
-  return next();
+  err.status = 401;
+  return next( err );
 };
 
 app.use( auth );

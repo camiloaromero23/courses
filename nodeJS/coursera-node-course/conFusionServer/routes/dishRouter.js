@@ -1,6 +1,5 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import mongoose from 'mongoose';
 
 import { verifyUser } from '../authenticate.js';
 import { Dishes } from '../models/dishes.js';
@@ -11,7 +10,8 @@ dishRouter.use( bodyParser.json() );
 
 dishRouter.get( '/', async ( req, res, next ) => {
   try {
-    const dishes = await Dishes.find( {} );
+    const dishes = await Dishes.find( {} )
+      .populate( 'comments.author' );
     res.status( 200 ).json( dishes );
   } catch ( err ) { next( err ); }
 } );
@@ -38,7 +38,8 @@ dishRouter.delete( '/', verifyUser, async ( req, res, next ) => {
 
 dishRouter.get( '/:dishId', async ( req, res, next ) => {
   try {
-    const dish = await Dishes.findById( req.params.dishId );
+    const dish = await Dishes.findById( req.params.dishId )
+      .populate( 'comments.author' );
     res.status( 200 ).json( dish );
   } catch ( err ) { next( err ); }
 } );
@@ -69,7 +70,8 @@ dishRouter.delete( '/:dishId', verifyUser, async ( req, res, next ) => {
 
 dishRouter.get( '/:dishId/comments', async ( req, res, next ) => {
   try {
-    const dish = await Dishes.findById( req.params.dishId );
+    const dish = await Dishes.findById( req.params.dishId )
+      .populate( 'comments.author' );
     if ( !dish ) {
       const err = new Error( `Dish ${req.params.dishId} not found` );
       err.status = 404;
@@ -87,14 +89,18 @@ dishRouter.post( '/:dishId/comments', verifyUser, async ( req, res, next ) => {
       err.status = 404;
       return next( err );
     }
+    req.body.author = req.user._id;
     dish.comments.push( req.body );
-    const { comments } = await dish.save();
-    if ( !comments ) {
+    const updatedDish = await dish.save();
+    if ( !updatedDish ) {
       const err = new Error( `Error saving Dish ${req.params.dishId}` );
       err.status = 500;
       return next( err );
     }
-    res.status( 200 ).json( comments );
+    const populatedDish = await Dishes
+      .findById( updatedDish._id )
+      .populate( 'comments.author' );
+    res.status( 200 ).json( populatedDish );
   } catch ( err ) { next( err ); }
 } );
 
@@ -127,7 +133,8 @@ dishRouter.delete( '/:dishId/comments', verifyUser, async ( req, res, next ) => 
 
 dishRouter.get( '/:dishId/comments/:commentId', async ( req, res, next ) => {
   try {
-    const dish = await Dishes.findById( req.params.dishId );
+    const dish = await Dishes.findById( req.params.dishId )
+      .populate( 'comments.author' );
     if ( !dish && !dish.comments.id( req.params.commentId ) ) {
       const err = new Error( `Dish ${req.params.dishId} or comment ${req.params.commentId} not found` );
       err.status = 404;
@@ -164,7 +171,10 @@ dishRouter.put( '/:dishId/comments/:commentId', verifyUser, async ( req, res, ne
       err.status = 500;
       return next( err );
     }
-    res.status( 200 ).json( updatedDish );
+    const populatedDish = await Dishes
+      .findById( updatedDish._id )
+      .populate( 'comments.author' );
+    res.status( 200 ).json( populatedDish );
   } catch ( err ) { next( err ); }
 } );
 
@@ -183,7 +193,10 @@ dishRouter.delete( '/:dishId/comments/:commentId', verifyUser, async ( req, res,
       err.status = 500;
       return next( err );
     }
-    res.status( 200 ).json( newDish );
+    const populatedDish = await Dishes
+      .findById( newDish._id )
+      .populate( 'comments.author' );
+    res.status( 200 ).json( populatedDish );
   } catch ( err ) { next( err ); }
 } );
 

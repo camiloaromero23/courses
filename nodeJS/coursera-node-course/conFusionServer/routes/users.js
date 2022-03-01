@@ -13,17 +13,29 @@ userRouter.get( '/', function ( req, res, next ) {
 } );
 
 userRouter.post( '/signup', ( req, res, next ) => {
-  const { username, password } = req.body;
+  const { username, firstname, lastname, password } = req.body;
 
   try {
     Users.register( new Users( { username } ), password, ( err, user ) => {
       if ( err ) {
         res.status( 500 ).json( { err } );
       } else {
-        passport.authenticate( 'local' )( req, res, () => {
-          res.status( 201 ).json( {
-            status: 'Registration Successful',
-            success: true
+        if ( firstname ) {
+          user.firstname = firstname;
+        }
+        if ( lastname ) {
+          user.lastname = lastname;
+        }
+        user.save( ( err, user ) => {
+          if ( err ) {
+            res.status( 500 ).json( { err } );
+            return;
+          }
+          passport.authenticate( 'local' )( req, res, () => {
+            res.status( 201 ).json( {
+              status: 'Registration Successful',
+              success: true
+            } );
           } );
         } );
       }

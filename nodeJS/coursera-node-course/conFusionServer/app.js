@@ -16,14 +16,14 @@ import usersRouter from './routes/users.js';
 import dishRouter from './routes/dishRouter.js';
 import promoRouter from './routes/promoRouter.js';
 import leaderRouter from './routes/leaderRouter.js';
+import { mongoUrl, secretKey } from './config.js';
 
 const __filename = fileURLToPath( import.meta.url );
 const __dirname = dirname( __filename );
 
-const url = 'mongodb://localhost:27017/conFusion';
-const SECRET_KEY = '12345-67890-09876-54321';
+const MONGO_URI = mongoUrl;
 try {
-  await mongoose.connect( url, {
+  await mongoose.connect( MONGO_URI, {
     authSource: "admin",
     user: "root",
     pass: "root",
@@ -45,32 +45,11 @@ app.set( 'view engine', 'jade' );
 app.use( logger( 'dev' ) );
 app.use( express.json() );
 app.use( express.urlencoded( { extended: false } ) );
-// app.use( cookieParser( SECRET_KEY ) );
-app.use( session( {
-  name: 'session-id',
-  secret: SECRET_KEY,
-  saveUninitialized: false,
-  resave: false,
-  store: new FileStore(),
-} ) );
 
 app.use( passport.initialize() );
-app.use( passport.session() );
 
 app.use( '/', indexRouter );
 app.use( '/users', usersRouter );
-
-const auth = ( req, res, next ) => {
-  const { user } = req;
-  if ( !user ) {
-    const err = new Error( 'You are not authenticated' );
-    err.status = 403;
-    return next( err );
-  }
-  return next();
-};
-
-app.use( auth );
 
 app.use( express.static( path.join( __dirname, 'public' ) ) );
 

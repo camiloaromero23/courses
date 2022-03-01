@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import passport from 'passport';
-
+import { getToken } from '../authenticate.js';
 import { Users } from '../models/users.js';
 
 const userRouter = express.Router();
@@ -32,7 +32,14 @@ userRouter.post( '/signup', ( req, res, next ) => {
 } );
 
 userRouter.post( '/login', passport.authenticate( 'local' ), ( req, res, next ) => {
-  res.status( 200 ).json( { success: true, status: 'You are successfully logged in' } );
+  const token = getToken( { _id: req.user._id } );
+  res.status( 200 ).json(
+    {
+      status: 'You are successfully logged in',
+      success: true,
+      token,
+    }
+  );
 } );
 
 userRouter.get( '/logout', ( req, res ) => {

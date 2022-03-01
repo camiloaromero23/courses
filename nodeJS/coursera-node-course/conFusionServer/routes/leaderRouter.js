@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 
+import { verifyUser } from "../authenticate.js";
 import { Leaders } from '../models/leaders.js';
 
 const leaderRouter = express.Router();
@@ -14,20 +15,20 @@ leaderRouter.get( '/', async ( req, res ) => {
   } catch ( err ) { next( err ); }
 } );
 
-leaderRouter.post( '/', async ( req, res ) => {
+leaderRouter.post( '/', verifyUser, async ( req, res ) => {
   try {
     const leader = await Leaders.create( req.body );
     res.status( 200 ).json( leader );
   } catch ( err ) { next( err ); }
 } );
 
-leaderRouter.put( '/', async ( req, res ) => {
+leaderRouter.put( '/', verifyUser, async ( req, res ) => {
   res.status( 403 ).send(
     `PUT operation not supported on /leaders`
   );
 } );
 
-leaderRouter.delete( '/', async ( req, res ) => {
+leaderRouter.delete( '/', verifyUser, async ( req, res ) => {
   try {
     const leaders = await Leaders.remove( {} );
     res.status( 200 ).json( leaders );
@@ -41,20 +42,20 @@ leaderRouter.get( '/:leaderId', async ( req, res ) => {
   } catch ( err ) { next( err ); }
 } );
 
-leaderRouter.post( '/:leaderId', async ( req, res ) => {
+leaderRouter.post( '/:leaderId', verifyUser, async ( req, res ) => {
   res.status( 403 ).send(
     `POST operation not supported on /leaders/${req.params.leaderId}`
   );
 } );
 
-leaderRouter.put( '/:leaderId', async ( req, res ) => {
+leaderRouter.put( '/:leaderId', verifyUser, async ( req, res ) => {
   try {
     const leader = await Leaders.findByIdAndUpdate( req.params.leaderId, { $set: req.body }, { new: true } );
     res.status( 200 ).json( leader );
   } catch ( err ) { next( err ); }
 } );
 
-leaderRouter.delete( '/:leaderId', async ( req, res ) => {
+leaderRouter.delete( '/:leaderId', verifyUser, async ( req, res ) => {
   try {
     const response = await Leaders.findByIdAndRemove( req.params.leaderId );
     res.status( 200 ).json( response );

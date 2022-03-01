@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 
+import { verifyUser } from '../authenticate.js';
 import { Dishes } from '../models/dishes.js';
 
 const dishRouter = express.Router();
@@ -15,20 +16,20 @@ dishRouter.get( '/', async ( req, res, next ) => {
   } catch ( err ) { next( err ); }
 } );
 
-dishRouter.post( '/', async ( req, res, next ) => {
+dishRouter.post( '/', verifyUser, async ( req, res, next ) => {
   try {
     const dish = await Dishes.create( req.body );
     res.status( 201 ).json( dish );
   } catch ( err ) { next( err ); }
 } );
 
-dishRouter.put( '/', ( req, res, next ) => {
+dishRouter.put( '/', verifyUser, ( req, res, next ) => {
   res.status( 403 ).send(
     `PUT operation not supported on /dishes`
   );
 } );
 
-dishRouter.delete( '/', async ( req, res, next ) => {
+dishRouter.delete( '/', verifyUser, async ( req, res, next ) => {
   try {
     const response = await Dishes.remove( {} );
     res.status( 200 ).json( response );
@@ -42,13 +43,13 @@ dishRouter.get( '/:dishId', async ( req, res, next ) => {
   } catch ( err ) { next( err ); }
 } );
 
-dishRouter.post( '/:dishId', ( req, res ) => {
+dishRouter.post( '/:dishId', verifyUser, ( req, res ) => {
   res.status( 403 ).send(
     `POST operation not supported on /dishes/${req.params.dishId}`
   );
 } );
 
-dishRouter.put( '/:dishId', async ( req, res, next ) => {
+dishRouter.put( '/:dishId', verifyUser, async ( req, res, next ) => {
   try {
     const dish = await Dishes.findByIdAndUpdate( req.params.dishId, {
       $set: req.body
@@ -58,7 +59,7 @@ dishRouter.put( '/:dishId', async ( req, res, next ) => {
   } catch ( err ) { next( err ); }
 } );
 
-dishRouter.delete( '/:dishId', async ( req, res, next ) => {
+dishRouter.delete( '/:dishId', verifyUser, async ( req, res, next ) => {
   try {
     const response = await Dishes.findByIdAndRemove( req.params.dishId );
     res.status( 200 ).json( response );
@@ -78,7 +79,7 @@ dishRouter.get( '/:dishId/comments', async ( req, res, next ) => {
   } catch ( err ) { next( err ); }
 } );
 
-dishRouter.post( '/:dishId/comments', async ( req, res, next ) => {
+dishRouter.post( '/:dishId/comments', verifyUser, async ( req, res, next ) => {
   try {
     const dish = await Dishes.findById( req.params.dishId );
     if ( !dish ) {
@@ -97,13 +98,13 @@ dishRouter.post( '/:dishId/comments', async ( req, res, next ) => {
   } catch ( err ) { next( err ); }
 } );
 
-dishRouter.put( '/:dishId/comments', ( req, res, next ) => {
+dishRouter.put( '/:dishId/comments', verifyUser, ( req, res, next ) => {
   res.status( 403 ).send(
     `PUT operation not supported on /dishes/${req.params.dishId}/comments`
   );
 } );
 
-dishRouter.delete( '/:dishId/comments', async ( req, res, next ) => {
+dishRouter.delete( '/:dishId/comments', verifyUser, async ( req, res, next ) => {
   try {
     const dish = await Dishes.findById( req.params.dishId );
     if ( !dish ) {
@@ -136,13 +137,13 @@ dishRouter.get( '/:dishId/comments/:commentId', async ( req, res, next ) => {
   } catch ( err ) { next( err ); }
 } );
 
-dishRouter.post( '/:dishId/comments/:commentId', ( req, res ) => {
+dishRouter.post( '/:dishId/comments/:commentId', verifyUser, ( req, res ) => {
   res.status( 403 ).send(
     `POST operation not supported on /dishes/${req.params.dishId}/comments/${req.params.commentId}`
   );
 } );
 
-dishRouter.put( '/:dishId/comments/:commentId', async ( req, res, next ) => {
+dishRouter.put( '/:dishId/comments/:commentId', verifyUser, async ( req, res, next ) => {
   try {
     const dish = await Dishes.findById( req.params.dishId );
     if ( !dish && !dish.comments.id( req.params.commentId ) ) {
@@ -167,7 +168,7 @@ dishRouter.put( '/:dishId/comments/:commentId', async ( req, res, next ) => {
   } catch ( err ) { next( err ); }
 } );
 
-dishRouter.delete( '/:dishId/comments/:commentId', async ( req, res, next ) => {
+dishRouter.delete( '/:dishId/comments/:commentId', verifyUser, async ( req, res, next ) => {
   try {
     const dish = await Dishes.findById( req.params.dishId );
     if ( !dish && !req.params.commentId ) {

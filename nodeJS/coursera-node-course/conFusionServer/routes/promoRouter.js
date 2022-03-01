@@ -1,5 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
+
+import { verifyUser } from "../authenticate.js";
 import { Promotions } from '../models/promotions.js';
 
 const promoRouter = express.Router();
@@ -13,20 +15,20 @@ promoRouter.get( '/', async ( req, res ) => {
   } catch ( err ) { next( err ); }
 } );
 
-promoRouter.post( '/', async ( req, res ) => {
+promoRouter.post( '/', verifyUser, async ( req, res ) => {
   try {
     const promotions = await Promotions.create( req.body );
     res.status( 201 ).json( promotions );
   } catch ( err ) { next( err ); }
 } );
 
-promoRouter.put( '/', async ( req, res ) => {
+promoRouter.put( '/', verifyUser, async ( req, res ) => {
   res.status( 403 ).send(
     `PUT operation not supported on /promotions`
   );
 } );
 
-promoRouter.delete( '/', async ( req, res ) => {
+promoRouter.delete( '/', verifyUser, async ( req, res ) => {
   try {
     const response = await Promotions.remove( {} );
     res.status( 200 ).json( response );
@@ -40,13 +42,13 @@ promoRouter.get( '/:promoId', async ( req, res ) => {
   } catch ( err ) { next( err ); }
 } );
 
-promoRouter.post( '/:promoId', async ( req, res ) => {
+promoRouter.post( '/:promoId', verifyUser, async ( req, res ) => {
   res.status( 403 ).send(
     `POST operation not supported on /promotions/${req.params.promoId}`
   );
 } );
 
-promoRouter.put( '/:promoId', async ( req, res ) => {
+promoRouter.put( '/:promoId', verifyUser, async ( req, res ) => {
   try {
     const promotion = await Promotions.findByIdAndUpdate( req.params.promoId, {
       $set: req.body
@@ -56,7 +58,7 @@ promoRouter.put( '/:promoId', async ( req, res ) => {
   } catch ( err ) { next( err ); }
 } );
 
-promoRouter.delete( '/:promoId', async ( req, res ) => {
+promoRouter.delete( '/:promoId', verifyUser, async ( req, res ) => {
   try {
     const response = await Promotions.findByIdAndRemove( req.params.promoId );
     res.status( 200 ).json( response );

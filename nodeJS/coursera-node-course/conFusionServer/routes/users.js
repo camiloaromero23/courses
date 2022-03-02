@@ -70,4 +70,20 @@ userRouter.get( '/logout', ( req, res, next ) => {
   return;
 } );
 
+userRouter.get(
+  '/facebook/token',
+  passport.authenticate( 'facebook-token' ),
+  ( req, res ) => {
+    if ( req.user ) {
+      const token = getToken( { _id: req.user._id } );
+      res.status( 200 ).json(
+        {
+          status: 'You are successfully logged in',
+          success: true,
+          token,
+        }
+      );
+    }
+  } );
+
 export default userRouter;

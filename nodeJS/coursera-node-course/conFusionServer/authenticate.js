@@ -2,8 +2,9 @@ import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
 import { Users } from "./models/users.js";
 import { ExtractJwt, Strategy as JwtStrategy } from "passport-jwt";
+import FacebookTokenStrategy from "passport-facebook-token";
 import jwt from "jsonwebtoken";
-import { secretKey } from './config.js';
+import { facebook, secretKey } from './config.js';
 
 export const localAuthentication = passport.use( new LocalStrategy( Users.authenticate() ) );
 passport.serializeUser( Users.serializeUser() );
@@ -53,3 +54,33 @@ export const includeUserHeader = async ( req, res, next ) => {
   req.user = user;
   next();
 };
+
+export const facebookPassport = passport.use(
+  new FacebookTokenStrategy( {
+    clientID: facebook.clientId,
+    clientSecret: facebook.clientSecret,
+  },
+    ( accessToken, refreshToken, profile, done ) => {
+      Users.findOne( { facebookId: profile.id }, ( err, user ) => {
+        if ( err ) {
+          return done( err, false );
+        }
+        if ( user ) {
+          return done( null, user );
+        } else {
+          const newUser = new Users( {
+            username: profile.displayName,
+            firstname: profile.name.givenName,
+            lastname: profile.name.familyName,
+            facebookId: profile.id,
+          } );
+          newUser.save( ( err ) => {
+            if ( err ) {
+              return done( err, false );
+            }
+            return done( null, newUser );
+          } );
+        }
+      } );
+    }
+  ) );

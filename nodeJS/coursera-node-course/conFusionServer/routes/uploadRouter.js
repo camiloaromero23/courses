@@ -2,6 +2,7 @@ import bodyParser from 'body-parser';
 import express from "express";
 import multer, { diskStorage } from "multer";
 import { includeUserHeader, verifyAdmin, verifyUser } from "../authenticate.js";
+import { cors, corsWithOptions } from './cors.js';
 
 
 const storage = diskStorage( {
@@ -27,19 +28,23 @@ const uploadRouter = express.Router();
 
 uploadRouter.use( bodyParser.json() );
 
-uploadRouter.get( '/', verifyUser, includeUserHeader, verifyAdmin, ( req, res, next ) => {
+uploadRouter.options( corsWithOptions, ( req, res ) => {
+  res.sendStatus( 200 );
+} );
+
+uploadRouter.get( '/', cors, verifyUser, includeUserHeader, verifyAdmin, ( req, res, next ) => {
   res.status( 403 ).send(
     `GET operation not supported on /imageUpload`
   );
 } );
 
-uploadRouter.put( '/', verifyUser, includeUserHeader, verifyAdmin, ( req, res, next ) => {
+uploadRouter.put( '/', corsWithOptions, verifyUser, includeUserHeader, verifyAdmin, ( req, res, next ) => {
   res.status( 403 ).send(
     `PUT operation not supported on /imageUpload`
   );
 } );
 
-uploadRouter.delete( '/', verifyUser, includeUserHeader, verifyAdmin, ( req, res, next ) => {
+uploadRouter.delete( '/', corsWithOptions, verifyUser, includeUserHeader, verifyAdmin, ( req, res, next ) => {
   res.status( 403 ).send(
     `DELETE operation not supported on /imageUpload`
   );
@@ -47,6 +52,7 @@ uploadRouter.delete( '/', verifyUser, includeUserHeader, verifyAdmin, ( req, res
 
 uploadRouter.post(
   '/',
+  corsWithOptions,
   verifyUser,
   includeUserHeader,
   verifyAdmin,

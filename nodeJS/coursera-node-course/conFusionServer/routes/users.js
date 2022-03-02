@@ -1,21 +1,22 @@
-import express from 'express';
 import bodyParser from 'body-parser';
+import express from 'express';
 import passport from 'passport';
 import { getToken, includeUserHeader, verifyAdmin, verifyUser } from '../authenticate.js';
 import { Users } from '../models/users.js';
+import { corsWithOptions } from './cors.js';
 
 const userRouter = express.Router();
 userRouter.use( bodyParser.json() );
 
 /* GET users listing. */
-userRouter.get( '/', verifyUser, includeUserHeader, verifyAdmin, async ( req, res, next ) => {
+userRouter.get( '/', corsWithOptions, verifyUser, includeUserHeader, verifyAdmin, async ( req, res, next ) => {
   try {
     const users = await Users.find( {} );
     res.status( 200 ).json( users );
   } catch ( err ) { next( err ); }
 } );
 
-userRouter.post( '/signup', ( req, res, next ) => {
+userRouter.post( '/signup', corsWithOptions, ( req, res, next ) => {
   const { username, firstname, lastname, password } = req.body;
 
   try {
@@ -46,7 +47,7 @@ userRouter.post( '/signup', ( req, res, next ) => {
   } catch ( err ) { next( err ); }
 } );
 
-userRouter.post( '/login', passport.authenticate( 'local' ), ( req, res, next ) => {
+userRouter.post( '/login', corsWithOptions, passport.authenticate( 'local' ), ( req, res, next ) => {
   const token = getToken( { _id: req.user._id } );
   res.status( 200 ).json(
     {

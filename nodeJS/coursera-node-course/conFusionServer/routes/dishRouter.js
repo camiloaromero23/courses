@@ -1,14 +1,19 @@
-import express from 'express';
 import bodyParser from 'body-parser';
-
-import { verifyUser, verifyAdmin, includeUserHeader } from '../authenticate.js';
+import express from 'express';
+import { includeUserHeader, verifyAdmin, verifyUser } from '../authenticate.js';
 import { Dishes } from '../models/dishes.js';
+import { cors, corsWithOptions } from './cors.js';
+
 
 const dishRouter = express.Router();
 
 dishRouter.use( bodyParser.json() );
 
-dishRouter.get( '/', async ( req, res, next ) => {
+dishRouter.options( corsWithOptions, ( req, res ) => {
+  res.sendStatus( 200 );
+} );
+
+dishRouter.get( '/', cors, async ( req, res, next ) => {
   try {
     const dishes = await Dishes.find( {} )
       .populate( 'comments.author' );
@@ -16,27 +21,27 @@ dishRouter.get( '/', async ( req, res, next ) => {
   } catch ( err ) { next( err ); }
 } );
 
-dishRouter.post( '/', verifyUser, includeUserHeader, verifyAdmin, async ( req, res, next ) => {
+dishRouter.post( '/', corsWithOptions, verifyUser, includeUserHeader, verifyAdmin, async ( req, res, next ) => {
   try {
     const dish = await Dishes.create( req.body );
     res.status( 201 ).json( dish );
   } catch ( err ) { next( err ); }
 } );
 
-dishRouter.put( '/', verifyUser, includeUserHeader, verifyAdmin, ( req, res, next ) => {
+dishRouter.put( '/', corsWithOptions, verifyUser, includeUserHeader, verifyAdmin, ( req, res, next ) => {
   res.status( 403 ).send(
     `PUT operation not supported on /dishes`
   );
 } );
 
-dishRouter.delete( '/', verifyUser, includeUserHeader, verifyAdmin, async ( req, res, next ) => {
+dishRouter.delete( '/', corsWithOptions, verifyUser, includeUserHeader, verifyAdmin, async ( req, res, next ) => {
   try {
     const response = await Dishes.remove( {} );
     res.status( 200 ).json( response );
   } catch ( err ) { next( err ); }
 } );
 
-dishRouter.get( '/:dishId', async ( req, res, next ) => {
+dishRouter.get( '/:dishId', cors, async ( req, res, next ) => {
   try {
     const dish = await Dishes.findById( req.params.dishId )
       .populate( 'comments.author' );
@@ -44,13 +49,13 @@ dishRouter.get( '/:dishId', async ( req, res, next ) => {
   } catch ( err ) { next( err ); }
 } );
 
-dishRouter.post( '/:dishId', verifyUser, includeUserHeader, verifyAdmin, ( req, res ) => {
+dishRouter.post( '/:dishId', corsWithOptions, verifyUser, includeUserHeader, verifyAdmin, ( req, res ) => {
   res.status( 403 ).send(
     `POST operation not supported on /dishes/${req.params.dishId}`
   );
 } );
 
-dishRouter.put( '/:dishId', verifyUser, includeUserHeader, verifyAdmin, async ( req, res, next ) => {
+dishRouter.put( '/:dishId', corsWithOptions, verifyUser, includeUserHeader, verifyAdmin, async ( req, res, next ) => {
   try {
     const dish = await Dishes.findByIdAndUpdate( req.params.dishId, {
       $set: req.body
@@ -60,7 +65,7 @@ dishRouter.put( '/:dishId', verifyUser, includeUserHeader, verifyAdmin, async ( 
   } catch ( err ) { next( err ); }
 } );
 
-dishRouter.delete( '/:dishId', verifyUser, includeUserHeader, verifyAdmin, async ( req, res, next ) => {
+dishRouter.delete( '/:dishId', corsWithOptions, verifyUser, includeUserHeader, verifyAdmin, async ( req, res, next ) => {
   try {
     const response = await Dishes.findByIdAndRemove( req.params.dishId );
     res.status( 200 ).json( response );
@@ -68,7 +73,7 @@ dishRouter.delete( '/:dishId', verifyUser, includeUserHeader, verifyAdmin, async
 } );
 
 
-dishRouter.get( '/:dishId/comments', async ( req, res, next ) => {
+dishRouter.get( '/:dishId/comments', cors, async ( req, res, next ) => {
   try {
     const dish = await Dishes.findById( req.params.dishId )
       .populate( 'comments.author' );
@@ -81,7 +86,7 @@ dishRouter.get( '/:dishId/comments', async ( req, res, next ) => {
   } catch ( err ) { next( err ); }
 } );
 
-dishRouter.post( '/:dishId/comments', verifyUser, includeUserHeader, async ( req, res, next ) => {
+dishRouter.post( '/:dishId/comments', corsWithOptions, verifyUser, includeUserHeader, async ( req, res, next ) => {
   try {
     const dish = await Dishes.findById( req.params.dishId );
     if ( !dish ) {
@@ -104,13 +109,13 @@ dishRouter.post( '/:dishId/comments', verifyUser, includeUserHeader, async ( req
   } catch ( err ) { next( err ); }
 } );
 
-dishRouter.put( '/:dishId/comments', verifyUser, includeUserHeader, ( req, res, next ) => {
+dishRouter.put( '/:dishId/comments', corsWithOptions, verifyUser, includeUserHeader, ( req, res, next ) => {
   res.status( 403 ).send(
     `PUT operation not supported on /dishes/${req.params.dishId}/comments`
   );
 } );
 
-dishRouter.delete( '/:dishId/comments', verifyUser, includeUserHeader, verifyAdmin, async ( req, res, next ) => {
+dishRouter.delete( '/:dishId/comments', corsWithOptions, verifyUser, includeUserHeader, verifyAdmin, async ( req, res, next ) => {
   try {
     const dish = await Dishes.findById( req.params.dishId );
     if ( !dish ) {
@@ -131,7 +136,7 @@ dishRouter.delete( '/:dishId/comments', verifyUser, includeUserHeader, verifyAdm
   } catch ( err ) { next( err ); }
 } );
 
-dishRouter.get( '/:dishId/comments/:commentId', async ( req, res, next ) => {
+dishRouter.get( '/:dishId/comments/:commentId', cors, async ( req, res, next ) => {
   try {
     const dish = await Dishes.findById( req.params.dishId )
       .populate( 'comments.author' );
@@ -144,13 +149,13 @@ dishRouter.get( '/:dishId/comments/:commentId', async ( req, res, next ) => {
   } catch ( err ) { next( err ); }
 } );
 
-dishRouter.post( '/:dishId/comments/:commentId', verifyUser, includeUserHeader, ( req, res ) => {
+dishRouter.post( '/:dishId/comments/:commentId', corsWithOptions, verifyUser, includeUserHeader, ( req, res ) => {
   res.status( 403 ).send(
     `POST operation not supported on /dishes/${req.params.dishId}/comments/${req.params.commentId}`
   );
 } );
 
-dishRouter.put( '/:dishId/comments/:commentId', verifyUser, includeUserHeader, async ( req, res, next ) => {
+dishRouter.put( '/:dishId/comments/:commentId', corsWithOptions, verifyUser, includeUserHeader, async ( req, res, next ) => {
   try {
     const dish = await Dishes.findById( req.params.dishId );
     const commentAuthorId = dish.comments.id( req.params.commentId ).author;
@@ -184,7 +189,7 @@ dishRouter.put( '/:dishId/comments/:commentId', verifyUser, includeUserHeader, a
   } catch ( err ) { next( err ); }
 } );
 
-dishRouter.delete( '/:dishId/comments/:commentId', verifyUser, includeUserHeader, async ( req, res, next ) => {
+dishRouter.delete( '/:dishId/comments/:commentId', corsWithOptions, verifyUser, includeUserHeader, async ( req, res, next ) => {
   try {
     const dish = await Dishes.findById( req.params.dishId );
     if ( !dish && !req.params.commentId ) {

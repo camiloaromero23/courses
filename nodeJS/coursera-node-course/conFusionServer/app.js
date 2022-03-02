@@ -1,22 +1,21 @@
-import createError from 'http-errors';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
 import express from 'express';
-import path from 'path';
-import cookieParser from 'cookie-parser';
-import logger from 'morgan';
-import mongoose from 'mongoose';
 import session from 'express-session';
-import sessionFileStore from 'session-file-store';
+import createError from 'http-errors';
+import mongoose from 'mongoose';
+import logger from 'morgan';
 import passport from 'passport';
-import { localAuthentication } from './authenticate.js';
+import path, { dirname } from 'path';
+import sessionFileStore from 'session-file-store';
+import { fileURLToPath } from 'url';
 
-import indexRouter from './routes/index.js';
-import usersRouter from './routes/users.js';
+import { mongoUrl } from './config.js';
 import dishRouter from './routes/dishRouter.js';
-import promoRouter from './routes/promoRouter.js';
+import indexRouter from './routes/index.js';
 import leaderRouter from './routes/leaderRouter.js';
-import { mongoUrl, secretKey } from './config.js';
+import promoRouter from './routes/promoRouter.js';
+import uploadRouter from './routes/uploadRouter.js';
+import usersRouter from './routes/users.js';
+
 
 const __filename = fileURLToPath( import.meta.url );
 const __dirname = dirname( __filename );
@@ -38,6 +37,15 @@ try {
 const FileStore = sessionFileStore( session );
 const app = express();
 
+app.all( '*', ( req, res, next ) => {
+  if ( req.secure ) {
+    return next();
+  }
+  const { hostname, url } = req;
+  const secPort = app.get( 'secPort' );
+  res.redirect( 307, `https://${hostname}:${secPort}${url}` );
+} );
+
 // view engine setup
 app.set( 'views', path.join( __dirname, 'views' ) );
 app.set( 'view engine', 'jade' );
@@ -56,6 +64,7 @@ app.use( express.static( path.join( __dirname, 'public' ) ) );
 app.use( '/dishes', dishRouter );
 app.use( '/promotions', promoRouter );
 app.use( '/leaders', leaderRouter );
+app.use( '/imageUpload', uploadRouter );
 
 // catch 404 and forward to error handler
 app.use( function ( req, res, next ) {

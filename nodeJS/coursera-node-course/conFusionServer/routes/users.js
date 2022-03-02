@@ -1,15 +1,18 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import passport from 'passport';
-import { getToken } from '../authenticate.js';
+import { getToken, includeUserHeader, verifyAdmin, verifyUser } from '../authenticate.js';
 import { Users } from '../models/users.js';
 
 const userRouter = express.Router();
 userRouter.use( bodyParser.json() );
 
 /* GET users listing. */
-userRouter.get( '/', function ( req, res, next ) {
-  res.send( 'respond with a resource' );
+userRouter.get( '/', verifyUser, includeUserHeader, verifyAdmin, async ( req, res, next ) => {
+  try {
+    const users = await Users.find( {} );
+    res.status( 200 ).json( users );
+  } catch ( err ) { next( err ); }
 } );
 
 userRouter.post( '/signup', ( req, res, next ) => {
@@ -54,7 +57,7 @@ userRouter.post( '/login', passport.authenticate( 'local' ), ( req, res, next ) 
   );
 } );
 
-userRouter.get( '/logout', ( req, res ) => {
+userRouter.get( '/logout', ( req, res, next ) => {
   if ( !req.session ) {
     const err = new Error( 'You are not logged in!' );
     err.status = 403;

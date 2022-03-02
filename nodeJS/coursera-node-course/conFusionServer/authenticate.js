@@ -34,3 +34,22 @@ export const jwtPassport = passport.use( new JwtStrategy(
 ) );
 
 export const verifyUser = passport.authenticate( 'jwt', { session: false } );
+
+export const verifyAdmin = async ( req, res, next ) => {
+  const { admin: isAdmin } = req.user;
+  if ( isAdmin ) {
+    next();
+  } else {
+    const err = new Error( `You are not authorized to perform this operation!` );
+    err.status = 403;
+    next( err );
+  }
+};
+
+export const includeUserHeader = async ( req, res, next ) => {
+  const token = req.headers.authorization.split( ' ' )[1];
+  const { _id } = jwt.decode( token );
+  const user = await Users.findById( _id );
+  req.user = user;
+  next();
+};

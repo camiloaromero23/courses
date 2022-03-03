@@ -7,14 +7,15 @@ import passport from 'passport';
 import path, { dirname } from 'path';
 import sessionFileStore from 'session-file-store';
 import { fileURLToPath } from 'url';
-
 import { mongoUrl } from './config.js';
 import dishRouter from './routes/dishRouter.js';
+import favoritesRouter from './routes/favorites.js';
 import indexRouter from './routes/index.js';
 import leaderRouter from './routes/leaderRouter.js';
 import promoRouter from './routes/promoRouter.js';
 import uploadRouter from './routes/uploadRouter.js';
 import usersRouter from './routes/users.js';
+
 
 
 const __filename = fileURLToPath( import.meta.url );
@@ -57,6 +58,10 @@ app.use( express.urlencoded( { extended: false } ) );
 app.use( passport.initialize() );
 
 app.use( '/', indexRouter );
+app.post( '/test', ( req, res ) => {
+  console.log( req.body );
+  res.status( 200 ).send( 'Hello World' );
+} );
 app.use( '/users', usersRouter );
 
 app.use( express.static( path.join( __dirname, 'public' ) ) );
@@ -64,7 +69,9 @@ app.use( express.static( path.join( __dirname, 'public' ) ) );
 app.use( '/dishes', dishRouter );
 app.use( '/promotions', promoRouter );
 app.use( '/leaders', leaderRouter );
+app.use( '/favorites', favoritesRouter );
 app.use( '/imageUpload', uploadRouter );
+
 
 // catch 404 and forward to error handler
 app.use( function ( req, res, next ) {

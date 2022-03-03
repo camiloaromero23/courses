@@ -8,6 +8,8 @@ import {
   FormikComponents,
   FormikYupPage,
   RegisterPage,
+  RegisterFormikPage,
+  DynamicForm,
 } from '../03-forms/pages';
 // import { LazyPage1, LazyPage2, LazyPage3 } from '../01-lazyload/pages';
 
@@ -93,5 +95,17 @@ export const routes: Route[] = [
     to: '/formik-abstraction',
     Component: FormikAbstraction,
     name: 'Formik Abstraction',
+  },
+  {
+    path: '/register-formik',
+    to: '/register-formik',
+    Component: RegisterFormikPage,
+    name: 'Register Formik',
+  },
+  {
+    path: '/dynamic-form',
+    to: '/dynamic-form',
+    Component: DynamicForm,
+    name: 'Dynamic Form',
   },
 ];

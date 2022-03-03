@@ -9,7 +9,7 @@ import sessionFileStore from 'session-file-store';
 import { fileURLToPath } from 'url';
 import { mongoUrl } from './config.js';
 import dishRouter from './routes/dishRouter.js';
-import favoritesRouter from './routes/favorites.js';
+import favoritesRouter from './routes/favoritesRouter.js';
 import indexRouter from './routes/index.js';
 import leaderRouter from './routes/leaderRouter.js';
 import promoRouter from './routes/promoRouter.js';

@@ -61,9 +61,15 @@ export const OrderDetailsProvider = (props) => {
       };
     });
   };
+  const resetOrder = () => {
+    setOptionCounts({
+      scoops: new Map(),
+      toppings: new Map(),
+    });
+  };
 
   const value = useMemo(() => {
-    return [{ ...optionCounts, totals }, updateItemCount];
+    return [{ ...optionCounts, totals }, updateItemCount, resetOrder];
   }, [optionCounts, totals]);
 
   return <OrderContext.Provider value={value} {...props} />;

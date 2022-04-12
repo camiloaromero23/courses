@@ -67,9 +67,15 @@ describe("App", () => {
 
     userEvent.click(confirmOrderButton);
 
+    const loading = screen.getByText(/loading/i);
+    expect(loading).toBeInTheDocument();
+
     const thankYouHeader = await screen.findByRole("heading", {
       name: /thank you/i,
     });
+
+    const notLoading = screen.queryByText("loading");
+    expect(notLoading).not.toBeInTheDocument();
 
     expect(thankYouHeader).toBeInTheDocument();
 
@@ -96,5 +102,39 @@ describe("App", () => {
     await screen.findByRole("checkbox", {
       name: "Cherries",
     });
+  });
+  it("should not display toppings header on summary page if no toppings ordered", async () => {
+    render(<App />);
+    const vanillaInput = await screen.findByRole("spinbutton", {
+      name: "Vanilla",
+    });
+
+    userEvent.clear(vanillaInput);
+    userEvent.type(vanillaInput, "1");
+
+    const chocolateInput = await screen.findByRole("spinbutton", {
+      name: "Chocolate",
+    });
+
+    userEvent.clear(chocolateInput);
+    userEvent.type(chocolateInput, "2");
+
+    const orderSummaryButton = screen.getByRole("button", {
+      name: /order sundae/i,
+    });
+
+    userEvent.click(orderSummaryButton);
+
+    const scoopsHeading = screen.getByRole("heading", {
+      name: "Scoops: $6.00",
+    });
+
+    expect(scoopsHeading).toBeInTheDocument();
+
+    const toppingsHeading = screen.queryByRole("heading", {
+      name: /toppings/i,
+    });
+
+    expect(toppingsHeading).not.toBeInTheDocument();
   });
 });

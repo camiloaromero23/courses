@@ -1,4 +1,5 @@
 import { render, screen } from "../../../testUtils/testing-library-utils";
+import userEvent from "@testing-library/user-event";
 
 import { Options } from "../Options";
 
@@ -28,5 +29,19 @@ describe("Options", () => {
       "M&Ms' topping",
       "Hot fudge topping",
     ]);
+  });
+
+  it("should not update total if scoops input is invalid", async () => {
+    render(<Options optionType="scoops" />);
+
+    const vanillaInput = await screen.findByRole("spinbutton", {
+      name: /vanilla/i,
+    });
+
+    userEvent.clear(vanillaInput);
+    userEvent.type(vanillaInput, "-1");
+
+    const scoopsSubtotal = screen.getByText("Scoops total: $0.00");
+    expect(scoopsSubtotal).toBeInTheDocument();
   });
 });

@@ -7,7 +7,6 @@ module.exports = {
     {
       files: ['*.ts', '*.tsx'],
       rules: {
-        'react/react-in-jsx-scope': 'off',
         '@typescript-eslint/no-shadow': ['error'],
         'no-shadow': 'off',
         'no-undef': 'off',
